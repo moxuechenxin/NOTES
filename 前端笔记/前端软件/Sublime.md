@@ -1,0 +1,52 @@
+- **Ctrl+P**：搜索项目中的文件
+- **Ctrl+P** （输入：rowNum）：跳转到第几行(Ctrl+G)
+- **Ctrl+Shift+P**：打开命令面板
+- **Ctrl+W**：关闭当前打开文件
+- **Ctrl+Shift+W**：关闭所有打开文件
+- **Ctrl+Shift+V**：粘贴并格式化（即保留缩进粘贴）
+- **Ctrl+[ 或 ]**：增加或减少缩进
+- **Ctrl+D**：选择单词，重复可增加选择下一个相同的单词（Ctrl+K 跳过选择）
+- **Ctrl+Shift+D**：复制行或选中项
+- **Alt+F3**：选择所有相同的词
+- **Ctrl+L**：选择行，重复可依次增加选择下一行
+- **Ctrl+Shift+L**：选择多行（拆分成多行光标）
+- **Ctrl+Enter**：在当前行后插入新行
+- **Ctrl+Shift+Enter**：在当前行前插入新行
+- **Ctrl+Shift+G**： 用标签包裹行或选中项 *需要Emmet插件
+- **Ctrl+Shift+;**： 移除与光标相关的父标签 *需要Emmet插件
+- **Alt+Shift+W**： 用标签包裹行或选中项
+- **Ctrl+X**：剪切一行到剪切板
+- **Ctrl+M**：跳转到对应括号
+- **Ctrl+U**：软撤销，撤销光标位置
+- **Ctrl+J**：选择标签内容
+- **Ctrl+F**：查找内容
+- **Ctrl+Shift+F**：查找并替换
+- **Ctrl+H**：替换
+- **Ctrl+R**：前往 method；列出文档中所有的CSS选择器
+- **Ctrl+N**：新建窗口
+- **Ctrl+K+B**：开关侧栏
+- **Ctrl+K+U/L**：大小写
+- **Ctrl+Shift+M**：选中当前括号内容，重复可选着括号本身(包括圆括号，花括号..)
+- **Ctrl+F2**：设置/删除标记
+- **Ctrl+/**：注释当前行或选中项
+- **Ctrl+Shift+/**：当前位置插入注释
+- **Ctrl+Alt+/**：块注释，并Focus到首行，写注释说明用的
+- **Ctrl+Shift+A**：选择当前标签前后，修改标签用的
+- **Ctrl+~**：显示/隐藏控制台
+- **F11**：全屏
+- **Shift+F11**：全屏免打扰模式，只编辑当前文件
+- **Alt+.**：闭合标签
+- **Alt+Shift+数字**：分屏显示
+- **Alt+数字**：切换打开第N个文件
+- **Shift+右键拖动**：光标多不，用来更改或插入列内容
+- **鼠标的前进后退键可切换Tab文件**
+- 按Ctrl，依次点击或选取，可需要编辑的多个位置
+- **按Ctrl+Shift+上下键**，可替换行
+- **Ctrl+Shift+’**：选择与光标关联的开始和结束标签 *需要Emmet插件
+- **Ctrl+Shift+H**：HTML、CSS、JS格式化 *基于prettify插件（需安装node.js）
+- **meta:vp  ：viewport**
+- **meta:compat  ：X-UA-Compatible**
+- **Ctrl+Shift+Y ：计算数学表达式**
+- **Ctrl+k+u,Ctrl+k+l** ：转换大小写
+- **ul>.item$*10 然后按tab键或ctrl+E：生成10个类名为item1，item2...item10的 li
+- h2{this is title} 然后按tab键或ctrl+E ：输出：`<h2>this is title</h2>`
