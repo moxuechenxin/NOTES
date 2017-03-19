@@ -72,6 +72,7 @@ Pragma:no-cache
 </body>
 </html>
 ```
+
 ## 6. HTTP Cache备选方案
 ### 6.1 LocalStorage
 ### 6.2 Web databases
