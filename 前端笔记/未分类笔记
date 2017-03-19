@@ -1,0 +1,13 @@
+### html标签内联绑定事件处理函数
+```
+<button onclick='handleClick(event)'></button>
+
+<script>
+    // 除了firefox，event可以不传入函数调用的参数中，直接在函数中引用event对象(其实是window.event)
+    // firefox必须在函数调用语句中通过参数传入event对象
+    function handleClick (event) {
+        console.log(event);
+        // this通过event.currentTarget获取
+    }
+</script>
+```
