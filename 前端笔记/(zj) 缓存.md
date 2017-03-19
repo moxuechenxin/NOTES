@@ -59,6 +59,7 @@ Pragma:no-cache
 - 配置服务器支持。
 - 确定内容更新机制和浏览器兼容方案
 ### 用法：
+
 ```
 <!--在demo.appcache文件中声明如何使用缓存-->
 <!DOCTYPE html>
