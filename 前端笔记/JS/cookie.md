@@ -55,43 +55,48 @@ function getCookie(name) {
 通过`document.cookie`重新赋值新建或修改cookie（并不会完全重写cookie，相当于添加操作）。  
 
 **新建或修改cookie**：
-```
+```js
 document.cookie="name=paul";
 ```
+
 ### 可配置参数
 
 **Expires**：    
 为 cookie 添加一个过期时间（以 UTC 或 GMT 时间）。默认情况下，cookie 在浏览器关闭时删除
-```
+```js
 document.cookie="name=paul; expires=Thu, 18 Dec 2013 12:00:00 GMT";
 ```
+
 **Max-Age**：  
 设置cookie的有效时长。单位：秒
-```
+```js
 // 设置cookie有效期一年
 document.cookie="name=paul; max-age=365*24*60*60";
 ```
 
 **Path**：  
 设置cookie的路径。默认情况下，cookie 属于当前页面。
-```
+```js
 // 设置cookie属于根路径
 document.cookie="name=paul; expires=Thu, 18 Dec 2013 12:00:00 GMT; path=/";
 ```
+
 **Domain**：
 设置cookie的域名。默认为当前文档位置的路径的域名部分。
-```
+```js
 // 设置域名为 "*.a.com"
 document.cookie="name=paul; expires=Thu, 18 Dec 2013 12:00:00 GMT; path=/;domain=.a.com";
 ```
+
 **Secure**：
 设置cookie是否只通过https协议传输
-```
+```js
 document.cookie="name=paul; expires=Thu, 18 Dec 2013 12:00:00 GMT; path=/;domain=.a.com;secure";
 ```
+
 **HttpOnly**：阻止通过js访问cookie（一般由服务端设置）
 
-```
+```js
 document.cookie="name=paul; expires=Thu, 18 Dec 2013 12:00:00 GMT; path=/;domain=.a.com;secure;HttpOnly";
 ```
 
@@ -133,7 +138,8 @@ function setCookie(opts) {
 
 ## 删除cookie
 设置 expires 参数为以前的时间即可
-```
+
+```js
 document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 ```
 **注意**：
