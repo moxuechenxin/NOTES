@@ -1,5 +1,5 @@
 ## 1. 是否缓存主要有两个返回控制头
-### 1.1 Cache-Control (http1.1)
+### 1.1 [Cache-Control](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control) (http1.1)
 **与Expires同时出现时，以Cache-Control为准**
 - **Cache-Control:max-age=315360000**  
 以秒为单位，未到期时不请求新数据，到期时效果等同于no-cache  
@@ -7,6 +7,7 @@
 这个网络资源， 可以在cache里面放一份，使用前先询问服务器该缓存资源是否最新，是则使用该缓存资源  
 - **Cache-Control:no-store**  
 这个网络资源不能缓存，每次都重新请求拉取  
+
 ### 1.2 Expires (http1.0)
 Expires:Thu,01 Dec 2015 16:00:00 GMT
 
