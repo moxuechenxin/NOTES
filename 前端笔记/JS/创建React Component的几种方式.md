@@ -105,10 +105,74 @@ export default Button;
 - 这种组件，没有自身的状态，所有数据都是通过props传入
 
 ## PureComponet
+当组件的`props`或者`state`发生变化的时候：React会对组件当前的`Props`和`State`分别与`nextProps`和`nextState`进行比较，当发现变化时，就会对当前组件以及子组件进行重新渲染，否则就不渲染。有时候为了避免组件进行不必要的重新渲染，我们通过定义`shouldComponentUpdate`来优化性能
 
 ```jsx
+class CounterButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        count: 1
+    };
+  }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.color !== nextProps.color) {
+      return true;
+    }
+    if (this.state.count !== nextState.count) {
+      return true;
+    }
+    return false;
+  }
+
+  render() {
+    return (
+      <button
+        color={this.props.color}
+        onClick={() => this.setState(state => ({count: state.count + 1}))}>
+        Count: {this.state.count}
+      </button>
+    );
+  }
+}
 ```
+React提供了`PureComponent`自动为我们添加的`shouldComponentUpate`函数（只是对`props`和`state`进行浅比较,即不能为引用类型）
+
+```jsx
+class ListOfWords extends React.PureComponent {
+  render() {
+    return <div>{ this.props.words.join(',') }</div>;
+  }
+ }
+ 
+class WordAdder extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      words: ['marklar']
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick() {
+    // 这个地方导致了bug
+    const words = this.state.words;
+    words.push('marklar');
+    this.setState({words: words});
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={ () => this.handleClick() } />
+        <ListOfWords words={ this.state.words } />
+      </div>
+    );
+  }
+}
+```
+`PureComponent`只会对`this.props.words`进行一次浅比较，虽然数组里面新增了元素，但是`this.props.words`与`nextProps.words`指向的仍是同一个数组，因此`this.props.words !== nextProps.words` 返回的便是`flase`，从而导致`ListOfWords`组件没有重新渲染
 
 
 **参考**：
