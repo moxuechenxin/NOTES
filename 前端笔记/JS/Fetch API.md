@@ -27,3 +27,4 @@ fetch(url, opts)
 **参考**：
 - [使用 Fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
 - [深入浅出Fetch API](http://wwsun.github.io/posts/fetch-api-intro.html)
+- [Fetch API (polyfill)](https://github.com/github/fetch)
