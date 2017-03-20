@@ -7,3 +7,4 @@ Fetch API  提供了一个 JavaScript接口，用于访问和操纵HTTP管道的
 
 **参考**：
 - [使用 Fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
+- [深入浅出Fetch API](http://wwsun.github.io/posts/fetch-api-intro.html)
