@@ -18,7 +18,7 @@ fetch('flowers.jpg')
     myImage.src = objectURL;
 });
 ```
-**语法**：
+### 语法：
 
 ```js
 fetch(url, options).then(function(response) {
@@ -28,25 +28,20 @@ fetch(url, options).then(function(response) {
 })
 ```
 
+### 返回值：
+`fetch(url, options)`返回一个 `Promise`，`resolve` 时回传 `Response对象`
+
 ## request
 ### options参数：
 - **method**：**默认值为`GET`**。请求使用的方法，如 `GET`、`POST`
 - **headers**：**默认值为`{}`**。请求的头信息，形式为 `Headers对象`或 `ByteString`
 - **mode**：请求的模式，如 `cors`、 `no-cors` 或者 `same-origin`
-- **cache**：请求的 cache 模式: `default`, `no-store`, `reload`, `no-cache`, `force-cache`, or `only-if-cached`
-- **credentials**: 请求的 credentials，如 omit、same-origin 或者 include
-- **redirect**: 
-
-method: 请求使用的方法，如 GET、POST。
-headers: 请求的头信息，形式为 Headers 对象或 ByteString。
-body: 请求的 body 信息：可能是一个 Blob、BufferSource、FormData、URLSearchParams 或者 USVString 对象。注意 GET 或 HEAD 方法的请求不能包含 body 信息。
-mode: 请求的模式，如 cors、 no-cors 或者 same-origin。
-credentials: 请求的 credentials，如 omit、same-origin 或者 include。
-cache:  请求的 cache 模式: default, no-store, reload, no-cache, force-cache, or only-if-cached。
-redirect: 可用的 redirect 模式: follow (自动重定向), error (如果产生重定向将自动终止并且抛出一个错误), 或者 manual (手动处理重定向). 在Chrome中，Chrome 47之前的默认值是 follow，从 Chrome 47开始是 manual。
-referrer: 一个 USVString 可以是 no-referrer、client或一个 URL。默认是 client。
-referrerPolicy: Specifies the value of the referer HTTP header. May be one of no-referrer, no-referrer-when-downgrade, origin, origin-when-cross-origin, unsafe-url.
-integrity: Contains the subresource integrity value of the request (e.g., sha256-BpfBw7ivV8q2jLiT13fxDYAe2tJllusRSZ273h2nFSE=).
+- **cache**：请求的 `cache` 模式: `default`, `no-store`, `reload`, `no-cache`, `force-cache`, or `only-if-cached`
+- **credentials**: 请求的 `credentials`，如 `omit`、`same-origin` 或者 `include`
+- **redirect**: 可用的 `redirec`t 模式: `follow` (自动重定向), `error` (如果产生重定向将自动终止并且抛出一个错误), 或者` manual` (手动处理重定向). 在Chrome中，Chrome 47之前的默认值是 follow，从 Chrome 47开始是 manual
+- **referrer**：**默认值为`client`**。一个 `USVString`, 可以是 `no-referrer`、`client`或一个 `URL`
+- **referrerPolicy**
+- **integrity**
 
 
 **参考**：
