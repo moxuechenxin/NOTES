@@ -40,6 +40,7 @@ fetch(target, options).then(function(response) {
 ### options参数：
 - **method**：**默认值为`GET`**。请求使用的方法，如 `GET`、`POST`
 - **headers**：**默认值为`{}`**。请求的头信息，形式为 `Headers对象`或 `ByteString`
+- **body**: 请求的 body 信息：可能是一个 `Blob`、`BufferSource`、`FormData`、`URLSearchParams` 或者 `USVString` 对象。**注意 GET 或 HEAD 方法的请求不能包含 body 信息**
 - **mode**：请求的模式，如 `cors`、 `no-cors` 或者 `same-origin`
 - **cache**：请求的 `cache` 模式: `default`, `no-store`, `reload`, `no-cache`, `force-cache`, or `only-if-cached`
 - **credentials**: 请求的 `credentials`，如 `omit`、`same-origin` 或者 `include`
