@@ -32,6 +32,7 @@ fetch(target, options).then(function(response) {
 `fetch(target, options)`返回一个 `Promise`，`resolve` 时回传 `Response对象`
 
 ## request
+
 ### target
 定义要获取的资源, 可选值：
 - 一个 `USVString` 字符串，包含要获取资源的 `URL`。
@@ -49,6 +50,29 @@ fetch(target, options).then(function(response) {
 - **referrerPolicy**
 - **integrity**
 
+## Response 对象
+获取`Responde对象`的方式：
+- 在`fetch()`处理完promises之后返回`Response对象`
+- 通过`Response构造函数`（只有在`ServiceWorkers`中才真正有用,当使用`respondWith()`方法并提供了一个自定义的`response`来接受`request`时）:
+
+```js
+var myBody = new Blob();
+
+addEventListener('fetch', function(event) {
+  event.respondWith(new Response(myBody, {
+    headers: { "Content-Type" : "text/plain" }
+  });
+});
+```
+### Response构造函数
+#### 参数：
+1. response的数据体
+2. 一个初始化对象(与`Request()`所接受的`init`参数类似)
+
+### Response对象属性
+- **status**：[Number]。**默认值为200**。为response的状态码
+- **statusText**：[String]。**默认值为`"OK"`**,该值与HTTP状态码消息对应
+- **ok**：[Boolean]。检查response的状态是否在`200-299`(包括200,299)这个范围内
 
 **参考**：
 - [使用 Fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
