@@ -21,7 +21,7 @@ fetch('flowers.jpg')
 ### 语法：
 
 ```js
-fetch(url, options).then(function(response) {
+fetch(target, options).then(function(response) {
   // handle HTTP response
 }, function(error) {
   // handle network error
@@ -29,9 +29,14 @@ fetch(url, options).then(function(response) {
 ```
 
 ### 返回值：
-`fetch(url, options)`返回一个 `Promise`，`resolve` 时回传 `Response对象`
+`fetch(target, options)`返回一个 `Promise`，`resolve` 时回传 `Response对象`
 
 ## request
+### target
+定义要获取的资源, 可选值：
+- 一个 `USVString` 字符串，包含要获取资源的 `URL`。
+- 一个 `Request对象`
+    
 ### options参数：
 - **method**：**默认值为`GET`**。请求使用的方法，如 `GET`、`POST`
 - **headers**：**默认值为`{}`**。请求的头信息，形式为 `Headers对象`或 `ByteString`
