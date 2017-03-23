@@ -95,6 +95,7 @@ fetch(myRequest).then(function(response) {
 ```
 
 ## request
+`fetch(target, options)`
 
 ### target
 定义要获取的资源, 可选值：
