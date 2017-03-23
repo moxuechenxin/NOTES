@@ -33,6 +33,66 @@ fetch(target, options).then(function(response) {
 
 当遇到网络错误时，`fetch()` 返回的 `promise` 会被 `reject`，并传回 `TypeError`，虽然这也可能因为权限或其它问题导致。成功的 `fetch()` 检查不仅要包括` promise` 被 `resolve`，还要包括 `Response.ok` 属性为 `true`。`HTTP 404` 状态并不被认为是网络错误
 
+## request 和 response共有
+### Headers 构造函数
+返回一个`headers对象`。一个 `headers` 对象是一个简单的多名值对
+
+```js
+var content = "Hello World";
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "text/plain");
+myHeaders.append("Content-Length", content.length.toString());
+myHeaders.append("X-Custom-Header", "ProcessThisImmediately");
+
+// 也可以传一个多维数组或者对象字面量
+myHeaders = new Headers({
+  "Content-Type": "text/plain",
+  "Content-Length": content.length.toString(),
+  "X-Custom-Header": "ProcessThisImmediately",
+});
+```
+
+其内容可以被获取：
+
+```js
+console.log(myHeaders.has("Content-Type")); // true
+console.log(myHeaders.has("Set-Cookie")); // false
+myHeaders.set("Content-Type", "text/html");
+myHeaders.append("X-Custom-Header", "AnotherValue");
+ 
+console.log(myHeaders.get("Content-Length")); // 11
+console.log(myHeaders.getAll("X-Custom-Header")); // ["ProcessThisImmediately", "AnotherValue"]
+ 
+myHeaders.delete("X-Custom-Header");
+console.log(myHeaders.getAll("X-Custom-Header")); // [ ]
+```
+
+**注意**：
+- 如果使用了一个不合法的HTTP Header属性名，那么Headers的方法通常都抛出 TypeError 异常。
+- 如果不小心写入了一个不可写的属性，也会抛出一个 TypeError 异常。除此以外的情况，失败了并不抛出异常
+
+```js
+var myResponse = Response.error();
+try {
+  myResponse.headers.set("Origin", "http://mybank.com");
+} catch(e) {
+  console.log("Cannot pretend to be a bank!");
+}
+```
+
+检查 content type 是否正确
+
+```js
+fetch(myRequest).then(function(response) {
+  if(response.headers.get("content-type") === "application/json") {
+    return response.json().then(function(json) {
+      // process your JSON further
+    });
+  } else {
+    console.log("Oops, we haven't got JSON!");
+  }
+});
+```
 
 ## request
 
@@ -76,38 +136,6 @@ fetch(myRequest,myInit)
 });
 ```
 
-### Headers 构造函数
-返回一个`headers对象`。一个 `headers` 对象是一个简单的多名值对
-
-```js
-var content = "Hello World";
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "text/plain");
-myHeaders.append("Content-Length", content.length.toString());
-myHeaders.append("X-Custom-Header", "ProcessThisImmediately");
-
-// 也可以传一个多维数组或者对象字面量
-myHeaders = new Headers({
-  "Content-Type": "text/plain",
-  "Content-Length": content.length.toString(),
-  "X-Custom-Header": "ProcessThisImmediately",
-});
-```
-
-其内容可以被获取：
-
-```js
-console.log(myHeaders.has("Content-Type")); // true
-console.log(myHeaders.has("Set-Cookie")); // false
-myHeaders.set("Content-Type", "text/html");
-myHeaders.append("X-Custom-Header", "AnotherValue");
- 
-console.log(myHeaders.get("Content-Length")); // 11
-console.log(myHeaders.getAll("X-Custom-Header")); // ["ProcessThisImmediately", "AnotherValue"]
- 
-myHeaders.delete("X-Custom-Header");
-console.log(myHeaders.getAll("X-Custom-Header")); // [ ]
-```
 
 ## Response 对象
 获取`Responde对象`的方式：
