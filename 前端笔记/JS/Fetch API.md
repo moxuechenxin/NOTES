@@ -46,9 +46,9 @@ myHeaders.append("X-Custom-Header", "ProcessThisImmediately");
 
 // 也可以传一个多维数组或者对象字面量
 myHeaders = new Headers({
-  "Content-Type": "text/plain",
-  "Content-Length": content.length.toString(),
-  "X-Custom-Header": "ProcessThisImmediately",
+    "Content-Type": "text/plain",
+    "Content-Length": content.length.toString(),
+    "X-Custom-Header": "ProcessThisImmediately",
 });
 ```
 
@@ -74,9 +74,9 @@ console.log(myHeaders.getAll("X-Custom-Header")); // [ ]
 ```js
 var myResponse = Response.error();
 try {
-  myResponse.headers.set("Origin", "http://mybank.com");
+    myResponse.headers.set("Origin", "http://mybank.com");
 } catch(e) {
-  console.log("Cannot pretend to be a bank!");
+    console.log("Cannot pretend to be a bank!");
 }
 ```
 
@@ -84,10 +84,10 @@ try {
 
 ```js
 fetch(myRequest).then(function(response) {
-  if(response.headers.get("content-type") === "application/json") {
-    return response.json().then(function(json) {
-      // process your JSON further
-    });
+    if(response.headers.get("content-type") === "application/json") {
+        return response.json().then(function(json) {
+          // process your JSON further
+        });
   } else {
     console.log("Oops, we haven't got JSON!");
   }
@@ -120,20 +120,22 @@ fetch(myRequest).then(function(response) {
 ```js
 var myHeaders = new Headers();
 
-var myInit = { method: 'GET',
-               headers: myHeaders,
-               mode: 'cors',
-               cache: 'default' };
+var myInit = { 
+    method: 'GET',
+    headers: myHeaders,
+    mode: 'cors',
+    cache: 'default' 
+};
 
 var myRequest = new Request('flowers.jpg',myInit);
 
 fetch(myRequest,myInit)
 .then(function(response) {
-  return response.blob();
+     return response.blob();
 })
 .then(function(myBlob) {
-  var objectURL = URL.createObjectURL(myBlob);
-  myImage.src = objectURL;
+     var objectURL = URL.createObjectURL(myBlob);
+     myImage.src = objectURL;
 });
 ```
 
@@ -147,9 +149,11 @@ fetch(myRequest,myInit)
 var myBody = new Blob();
 
 addEventListener('fetch', function(event) {
-  event.respondWith(new Response(myBody, {
-    headers: { "Content-Type" : "text/plain" }
-  });
+    event.respondWith(new Response(myBody, {
+        headers: { 
+            "Content-Type" : "text/plain" 
+        }
+    });
 });
 ```
 
