@@ -31,6 +31,9 @@ fetch(target, options).then(function(response) {
 ### 返回值：
 `fetch(target, options)`返回一个 `Promise`，`resolve` 时回传 `Response对象`
 
+当遇到网络错误时，`fetch()` 返回的 `promise` 会被 `reject`，并传回 `TypeError`，虽然这也可能因为权限或其它问题导致。成功的 `fetch()` 检查不仅要包括` promise` 被 `resolve`，还要包括 `Response.ok` 属性为 `true`。`HTTP 404` 状态并不被认为是网络错误
+
+
 ## request
 
 ### target
@@ -49,6 +52,9 @@ fetch(target, options).then(function(response) {
 - **referrer**：**默认值为`client`**。一个 `USVString`, 可以是 `no-referrer`、`client`或一个 `URL`
 - **referrerPolicy**
 - **integrity**
+
+### Request 构造函数
+传递的参数同`fetch()`
 
 ## Response 对象
 获取`Responde对象`的方式：
