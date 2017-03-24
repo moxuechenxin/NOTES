@@ -204,13 +204,23 @@ addEventListener('fetch', function(event) {
 
 ### Response构造函数
 #### 参数：
-1. response的数据体
+1. response的数据体（`body`）
 2. 一个初始化对象(与`Request()`所接受的`init`参数类似)
 
 ### Response对象属性
 - **status**：[Number]。**默认值为200**。为response的状态码
 - **statusText**：[String]。**默认值为`"OK"`**,该值与HTTP状态码消息对应
 - **ok**：[Boolean]。检查response的状态是否在`200-299`(包括200,299)这个范围内
+- **type**：[String]
+    - `basic`: 正常的，同域的请求，包含所有的headers除开"Set-Cookie"和"Set-Cookie2"。
+    - `cors`: Response从一个合法的跨域请求获得，一部分header和body可读。
+    - `error`: 网络错误。Response的status是0，Headers是空的并且不可写。当Response是从Response.error()中得到时，就是这种类型。`error`类型会导致`fetch()`函数的`Promise`被`reject`并回抛出一个`TypeError`
+    - `opaque`: Response从"no-cors"请求了跨域资源。依靠Server端来做限制
+
+### Response静态方法
+- `Response.error()`：返回一个错误的请求
+- `Response.redirect(url, status)`：返回一个跳转URL的请
+
 
 **参考**：
 - [使用 Fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
