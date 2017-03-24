@@ -93,6 +93,16 @@ fetch(myRequest).then(function(response) {
   }
 });
 ```
+#### Headers 对象的`Guard`属性
+**可选值**：
+- `none`：默认的
+- `request`：从 request 中获得的 headers（Request.headers）只读
+- `request-no-cors`：从不同域（Request.mode no-cors）的 request 中获得的 headers 只读
+- `response`：从 response 中获得的 headers（Response.headers）只读
+- `immutable`：在 ServiceWorkers 中最常用的，所有的 headers 都只读
+
+**注意**：
+不可以添加或者修改一个 `guard` 属性是 `request` 的 `Request Headers` 的 `Content-Length` 属性。同样地，插入 `Set-Cookie` 属性到一个 `response headers` 是不允许的，因此 `ServiceWorkers` 是不能给合成的 `Response` 的 `headers` 添加一些 `cookies`
 
 ## request
 `fetch(target, options)`
@@ -138,6 +148,13 @@ fetch(myRequest,myInit)
      myImage.src = objectURL;
 });
 ```
+
+可以传入一个已存在的 `request 对象`来创造一个拷贝
+
+```js
+var anotherRequest = new Request(myRequest,myInit);
+```
+`request` 和 `response bodies` 只能被使用一次, 创建一个拷贝就可以再次使用 `request/response` 了，可以使用不同的 `init 参数`
 
 
 ## Response 对象
