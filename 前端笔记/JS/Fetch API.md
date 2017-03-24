@@ -34,8 +34,8 @@ fetch(target, options).then(function(response) {
 当遇到网络错误时，`fetch()` 返回的 `promise` 会被 `reject`，并传回 `TypeError`，虽然这也可能因为权限或其它问题导致。成功的 `fetch()` 检查不仅要包括` promise` 被 `resolve`，还要包括 `Response.ok` 属性为 `true`。`HTTP 404` 状态并不被认为是网络错误
 
 ## request 和 response共有
-### Headers 构造函数
-返回一个`headers对象`。一个 `headers` 对象是一个简单的多名值对
+### headers对象
+通过构造函数`Headers`可以返回一个`headers对象`。一个 `headers` 对象是一个简单的多名值对
 
 ```js
 var content = "Hello World";
@@ -103,6 +103,34 @@ fetch(myRequest).then(function(response) {
 
 **注意**：
 不可以添加或者修改一个 `guard` 属性是 `request` 的 `Request Headers` 的 `Content-Length` 属性。同样地，插入 `Set-Cookie` 属性到一个 `response headers` 是不允许的，因此 `ServiceWorkers` 是不能给合成的 `Response` 的 `headers` 添加一些 `cookies`
+
+### body对象
+可以是以下类型：
+- **ArrayBuffer**
+- **ArrayBufferView (Uint8Array and friends)**
+- **Blob/File**
+- **String**
+- **URLSearchParams**
+- **FormData**
+
+`Body 类`定义了以下方法 (这些方法都被 `Request` 和`Response`所实现)以获取body内容. 这些方法都会返回一个被解析后的`promise`对象和数据：
+- **arrayBuffer()**
+- **blob()**
+- **json()**
+- **text()**
+- **formData()**
+
+请求体可以由传入body参数来进行设置:
+
+```js
+var form = new FormData(document.getElementById('login-form'));
+
+fetch("/login", {
+    method: "POST",
+    body: form
+})
+```
+request 和response (也包括fetch() 方法)都会试着自动设置content type.如果没有设置Content-Type值，发送的请求也会自动设值
 
 ## request
 `fetch(target, options)`
