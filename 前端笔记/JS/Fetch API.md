@@ -215,6 +215,7 @@ addEventListener('fetch', function(event) {
 **参考**：
 - [使用 Fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch)
 - [fetch()](https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalFetch/fetch)
-- [深入浅出Fetch API](http://wwsun.github.io/posts/fetch-api-intro.html)
-- [Fetch API (polyfill)](https://github.com/github/fetch)
 - [【翻译】这个API很“迷人”——(新的Fetch API)](https://www.w3ctech.com/topic/854)
+- [Fetch API (polyfill)](https://github.com/github/fetch)
+- [深入浅出Fetch API](http://wwsun.github.io/posts/fetch-api-intro.html)
+
