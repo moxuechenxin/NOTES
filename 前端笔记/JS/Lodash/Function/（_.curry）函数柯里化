@@ -1,0 +1,10 @@
+## Lodash
+创建一个函数，该函数接收 func 的参数，要么调用func返回的结果，如果 func 所需参数已经提供，则直接返回 func 所执行的结果。或返回一个函数，接受余下的func 参数的函数，可以使用 func.length 强制需要累积的参数个数。
+(_.curry.placeholder值，默认是以 _ 作为附加部分参数的占位符)
+
+**语法**：
+
+```js
+_.curry(func, [arity=func.length])
+```
+**注意**：这个方法不会设置 curried 函数的 "length" 属性
