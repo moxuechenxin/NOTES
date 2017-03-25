@@ -35,6 +35,20 @@ curried(1)(_, 3)(2);
 ## 原生
 
 ```js
-
+function curry(fn, arity) {
+	var len = arity || fn.length;
+	return function () {
+		debugger;
+		len -= arguments.length;
+		for(var i = 0, item; item = arguments[i++];) {
+			fn = fn.bind(this, item);
+		}
+		if (len > 0) {
+			return fn;
+		} else {
+			return fn();
+		}
+	}
+}
 ```
 
