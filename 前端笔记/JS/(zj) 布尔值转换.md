@@ -1,1 +1,0 @@
-0、-0、null、""、false、undefined 或 NaN
