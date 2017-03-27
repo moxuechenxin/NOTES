@@ -79,7 +79,10 @@ Pragma:no-cache
 ### 6.1 LocalStorage
 ### 6.2 Web databases
 
-**参考**:  
+
+**Reference**:  
+- [浏览器的缓存(1)](https://segmentfault.com/a/1190000004486640)
+- [浏览器的缓存(2)](https://segmentfault.com/a/1190000004486660)
 - http://www.imooc.com/video/10627    
 - https://github.com/fouber/blog/issues/6  
 - https://aotu.io/notes/2016/03/16/optimization/  
