@@ -11,6 +11,7 @@ anchors|拥有`name`属性的`a`元素的集合 | HTMLCollection | HTMLAnchorEle
 scripts| 所有`<script>`元素的集合 | HTMLCollection | HTMLScriptElement
 styleSheets | 文档中链接或嵌入的样式表集合 | StyleSheetList |  CSSStyleSheet
 
+
 **注意**：
 
 - 以上集合类的单个元素可通过方法`item(index)`或下表索引`[index]`访问
