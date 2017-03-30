@@ -3,7 +3,7 @@
 #### 集合类
 
 代码 | 集合ji | 集合类型 | 元素类型
---|--|--|--
+---|---|---|---
 forms | 所有 `form` 元素的集合 | HTMLCollection | HTMLFormElement
 images | 所有`image`元素的集合 | HTMLCollection | HTMLImageElement
 links | 所有具有`href` 属性值的 `<area>` 元素 `<a>` 元素的集合 | HTMLCollection | HTMLAnchorElement
@@ -20,7 +20,7 @@ styleSheets | 文档中链接或嵌入的样式表集合 | StyleSheetList |  CSS
 #### 元素类
 
 代码 | 返回值 | 返回值类型
---|--|--
+---|---|---
 head | （IE9+）返回当前文档中的 `<head>` 元素。如果有多个 `<head>` 元素，则返回第一个 | HTMLHeadElement
 body|返回或设置当前文档中的`<body>`元素或者最外层`<frameset>`元素| HTMLBodyElement或
 documentElement | 返回文档对象（document）的根元素（例如，HTML文档的 <html> 元素）|
