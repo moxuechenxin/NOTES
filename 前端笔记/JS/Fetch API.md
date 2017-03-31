@@ -228,4 +228,5 @@ addEventListener('fetch', function(event) {
 - [【翻译】这个API很“迷人”——(新的Fetch API)](https://www.w3ctech.com/topic/854)
 - [Fetch API (polyfill)](https://github.com/github/fetch)
 - [深入浅出Fetch API](http://wwsun.github.io/posts/fetch-api-intro.html)
+- [Fetch围观指南]( **https://github.com/dwqs/blog/issues/7** )
 
