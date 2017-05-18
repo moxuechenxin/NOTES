@@ -36,6 +36,7 @@
 
 快捷键 | 说明
 ---|---
+`alt + F12` | 打开终端
 `Control + alt + R` | 运行项目
 `Command + Control + R` | 运行Debug
 `Command + F8` | 添加断点
