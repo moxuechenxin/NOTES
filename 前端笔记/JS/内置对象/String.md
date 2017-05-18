@@ -1,13 +1,15 @@
 # String对象属性
 ## 静态属性
+
 属性 | 描述
---|--
+---|---
 String.prototype |	使您有能力向对象添加属性和方法。
 String.length | 返回`1`
 
 ## 实例属性
+
 属性 | 描述
---|--
+---|---
 constructor	| （继承自String.prototype.constructor）返回对创建此对象的函数的引用。
 length | 返回字符串中字符编码单元的数量
 
@@ -15,16 +17,19 @@ length | 返回字符串中字符编码单元的数量
 
 # String对象方法
 ## 静态方法
+
 方法 | 参考 | 描述
---|--|--
+---|---|---
 String.fromCharCode() | (num1[, ...[, numN]]) | 返回使用指定的Unicode值序列创建的字符串
 String.fromCodePoint() | (num1[, ...[, numN]]) |（ES6）返回使用指定的代码点序列创建的字符串
 String.raw() | (callSite, ...substitutions) |（ES6）返回一个模板字符串的原始字面量值 
 
 ## 实例方法
+
 **字符查找**
+
 方法 | 参考 | 描述
---|--|--
+---|---|---
 charAt() | (index) | 返回字符串中指定位置的字符（等同于通过下标索引取值）
 charCodeAt() | (index) | 返回指定索引位置字符的Unicode值
 codePointAt() | (index) |（ES6）返回指定索引位置字符的Unicode值
@@ -33,15 +38,17 @@ lastIndexOf() | (searchValue[, fromIndex]) | 同上，但查找方向从右到�
 includes() | (searchValue[, fromIndex]) |（ES6）判断一个字符串是否包含在另一个字符串中,返回`true`或`false`
 
 **字符串截取**
+
 方法 | 参考 | 描述
---|--|--
+---|---|---
 slice() | (start[, end]) | 返回截取的部分字符串（`start`和`end`均可取负）
 substr() | (start[, length]) | 返回字符串中从指定位置开始到指定长度的子字符串（`start`可取负）
 substring() | (start[, end]) |返回字符串两个索引之间（或到字符串末尾）的子串
 
 **正则相关方法**
+
 方法 | 参考 | 描述
---|--|--
+---|---|---
 search() | (regexp \| substr) | 返回正则表达式在字符串中首次匹配项的索引，无匹配则返回-1
 match() | (regexp \| substr) | 返回一个包含匹配结果的数组，无匹配则返回null 
 replace() | (regexp \| substr , newSubStr \| function) | 返回替换后的字符串,无匹配则返回原字符串
@@ -50,8 +57,9 @@ split() | ([separator][, limit]) | 将字符串拆分为一个字符串数组
 
 
 **其他方法**
+
 方法 | 参考 | 描述
---|--|--
+---|---|---
 toLowerCase() | 无 | 转小写
 toUpperCase() | 无 | 转大写
 trim() | 无 | （IE9+）返回删除了两端空白字符的新字符串

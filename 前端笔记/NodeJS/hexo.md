@@ -44,7 +44,7 @@ npm install hexo-deployer-git --save
 
 ## 常用命令
 命令 | 简写 | 描述 
---|--|--
+---|---|---
 `hexo init` | | 初始化一个目录
 `hexo new "postName"` | `hexo n "postName"` | 新建文章
 `hexo new page "pageName"` | `hexo n page "pageName"` | 新建页面
