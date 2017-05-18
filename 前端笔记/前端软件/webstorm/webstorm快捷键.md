@@ -100,7 +100,7 @@
 ---|---
 `F5` | 复制文件到某个目录
 `F6` | 移动文件到某个目录
-`Command + delete` | 安全删除
+`Command + delete` | 安全删除（删除当前行）
 `shift + F6` | 重命名
 
 ## 全局的
@@ -109,7 +109,10 @@
 ---|---
 `双击shift` | 弹出小浮窗搜索所有
 `Command + shift + A` | 整个工程的查找操作
-`Command + 1` `Command + 2` … | 打开各种工具窗口
+`Command + 1` | 打开/关闭项目目录树
+`Command + 2` | 打开/关闭favorite
+`Command + 6` | 打开/关闭TODO
+`Command + 9` | 打开/关闭版本控制（git、svn等）
 `alt + shift + F` | 把文件添加到收藏夹
 `alt + shift + I` | 打开项目描述
 `alt + ~` | 快速切换当前计划
