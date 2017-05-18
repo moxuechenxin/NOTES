@@ -8,6 +8,7 @@
 
 快捷键 | 说明
 ---|---
+`control + G` | 选中相同部分 
 `shift + alt + ↑` 或 `shift + alt + ↓` | 当前行或选中部分上移／下移
 `Command + alt + T` | 用 (if..else, try..catch, for, etc.)包住
 `Command + /` | 注释/取消注释的行注释
