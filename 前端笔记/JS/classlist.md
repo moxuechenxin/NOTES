@@ -23,5 +23,5 @@
 ### contains( String )
 检查元素的类属性中是否存在指定的类值
 
-**Reference**：
+**参考**：
 - [Element.classList](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/classList)
