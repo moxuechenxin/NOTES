@@ -8,7 +8,11 @@
 
 快捷键 | 说明
 ---|---
-`control + G` | 选中相同部分 
+`Control + G` | 选中相同部分 
+`Control + Command + G` | 选中所有相同部分
+`Control + shift + G` | 取消当前的选中
+`esc` | 取消所有的选中和多处光标
+`alt + 单击` | 光标在多处定位
 `shift + alt + ↑` 或 `shift + alt + ↓` | 当前行或选中部分上移／下移
 `Command + alt + T` | 用 (if..else, try..catch, for, etc.)包住
 `Command + /` | 注释/取消注释的行注释
@@ -29,7 +33,6 @@
 `Command + 加号` 和 `Command + 减号` | 展开／收缩代码块
 `Command + shift + 加号` 和 `Command + shift + 减号` | 收缩整个文档的代码块
 `Command + W` | 关闭当前文件选项卡
-`alt + 单击` | 光标在多处定位
 `shift + F6` | 高级修改，可快速修改光标所在的标签、变量、函数等
 `alt + /` | 代码补全
 
