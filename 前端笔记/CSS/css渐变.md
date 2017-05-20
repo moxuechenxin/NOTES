@@ -176,10 +176,9 @@ radial-gradient([ [<shape> | <size>] [at <position>]?,| at <position>,]?<color-s
 ```
 
 **参考**：  
-
-- http://www.runoob.com/css3/css3-gradients.html
-- http://www.w3cplus.com/css3/new-css3-linear-gradient.html
-- http://www.w3cplus.com/css3/new-css3-radial-gradient.html
-- http://www.zhangxinxu.com/wordpress/2013/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3css3-gradient%E6%96%9C%E5%90%91%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98/
+- [菜鸟教程：CSS3 渐变（Gradients）](http://www.runoob.com/css3/css3-gradients.html)
+- [w3cplus：再说CSS3渐变——线性渐变](http://www.w3cplus.com/css3/new-css3-linear-gradient.html)
+- [w3cplus：再说CSS3渐变——径向渐变](http://www.w3cplus.com/css3/new-css3-radial-gradient.html)
+- [深入理解CSS3 gradient斜向线性渐变](http://www.zhangxinxu.com/wordpress/2013/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3css3-gradient%E6%96%9C%E5%90%91%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98/)
 
 

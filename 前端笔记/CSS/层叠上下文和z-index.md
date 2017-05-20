@@ -1,6 +1,7 @@
 ## 7阶层叠水平（层叠顺序）
+
 属性|层叠顺序
---|--
+---|---
 正`z-index` | 7
 `z-index:auto`或看成`z-index:0`不依赖`z-index`的层叠上下文 | 6
 `inline/inline-block`水平盒子 | 5
@@ -35,4 +36,4 @@
 - 元素的`-webkit-overflow-scrolling`设为`touch`
 
 **参考**：
-- http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/
+- [张鑫旭：深入理解CSS中的层叠上下文和层叠顺序](http://www.zhangxinxu.com/wordpress/2016/01/understand-css-stacking-context-order-z-index/)

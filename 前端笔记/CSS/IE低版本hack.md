@@ -2,14 +2,23 @@
 
 ```html
 <!–[if !IE]><!–> 除IE外都可识别 <!–<![endif]–>
+
 <!–[if IE]> 所有的IE可识别 <![endif]–>
+
 <!–[if IE 6]> 仅IE6可识别 <![endif]–>
+
 <!–[if lt IE 6]> IE6以及IE6以下版本可识别 <![endif]–>
+
 <!–[if gte IE 6]> IE6以及IE6以上版本可识别 <![endif]–>
+
 <!–[if IE 7]> 仅IE7可识别 <![endif]–>
+
 <!–[if lt IE 7]> IE7以及IE7以下版本可识别 <![endif]–>
+
 <!–[if gte IE 7]> IE7以及IE7以上版本可识别 <![endif]–>
+
 <!–[if IE 8]> 仅IE8可识别 <![endif]–>
+
 <!–[if IE 9]> 仅IE9可识别 <![endif]–>
 ```
 
@@ -29,13 +38,17 @@ gte | [if gte IE 7] | 大于或等于运算。如果第一个参数是大于或�
 ## 1. IE6 css hack:
 ```css
 *html Selector {} /* Selector 表示 css选择器 下同 */
+
 Selector { _property: value; } /* property: value 表示 css 的属性名: 属性值 下同 */
+
 Selector { _property/**/: /**/value; }
+
 Selector { -property: value; } /*IE6 css hack常用习惯推荐使用下划线_ */
 ```
 ## 2. IE7 css hack
 ```css
 *+html Selector {}
+
 *:first-child+html Selector {}
 ```
 
@@ -54,7 +67,9 @@ Selector { property: value\9; }
 ## 5. IE6、IE7共有的css hack
 ```css
 Selector { *property: value; }
+
 Selector { #property: value; }
+
 Selector { +property: value; }
 ```
 ## 6. IE8+ css hack
@@ -67,4 +82,4 @@ Selector { property: value\9\0; }
 ```
 
 **参考**:
-- http://www.webhj.com/hj-650.html
+- [Css Hack 大全（IE6、IE7、IE8、IE9 css hack）](http://www.webhj.com/hj-650.html)

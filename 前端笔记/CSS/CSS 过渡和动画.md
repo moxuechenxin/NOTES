@@ -136,4 +136,4 @@ none
 - 在transition完成前设置 display: none，事件同样不会被触发
 
 **参考**：
-- http://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms-animation-introduction/
+- [CSS3 Transitions, Transforms和Animation使用简介与应用展示](http://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms-animation-introduction/)

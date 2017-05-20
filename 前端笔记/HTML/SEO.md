@@ -16,12 +16,12 @@
 - 导航SEO优化
 
 #### 网页代码优化
-- <title>标题
-- <meta name="keywords" content="关键词1,关键词2">
-- <meta name="description" content="页面描述">
+- `<title>`标题
+- `<meta name="keywords" content="关键词1,关键词2">`
+- `<meta name="description" content="页面描述">`
 - 语义化代码：
     - h1~h6：标题
-    - <em>,<strong>：强调（对应的无语义标签：<b><i>）
+    - `<em>`,`<strong>`：强调（对应的无语义标签：`<b>``<i>`）
     - ul：无序列表
     - ol：有序列表
     - dl：定义数据列表
