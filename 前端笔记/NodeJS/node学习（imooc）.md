@@ -239,3 +239,166 @@ req.on('error', (e) => {
 req.write(postData);
 req.end();
 ```
+
+## Buffer
+
+## Stream
+```js
+let fs = require('fs')
+
+let readStream = fs.createReadStream('stream_copy_logo.png')
+let writeStream = fs.createWriteStream('1-stream_copy_logo.png')
+
+readStream.on('data', (chunk) => {
+  if (writeStream.write(chunk) === false) {
+    console.log('still cached')
+    readStream.pause()
+  }
+  writeStream.write(chunk)
+})
+
+readStream.on('end', () => {
+  writeStream.end()
+})
+
+writeStream.on('drain', () => {
+  console.log('data drains')
+  readStream.resume()
+})
+```
+
+```js
+let fs = require('fs')
+
+fs.createReadStream('stream_copy_logo.png'),pipe(fs.createWriteStream('1-stream_copy_logo.png'))
+```
+
+```js
+let fs = require('fs')
+
+let readStream = fs.createReadStream('stream_copy_logo.js')
+let n = 0
+
+readStream.on('data', (chunk) => {
+  n++
+  console.log('data emits')
+  console.log(Buffer.isBuffer(chunk))
+  console.log(chunk.toString('utf8'))
+
+  readStream.pause()
+  console.log('data pause')
+  setTimeout(() => {
+    console.log('data pause end')
+    readStream.resume()
+  }, 100)
+}).on('readable', () => {
+  console.log('data readable')
+}).on('end', () => {
+  console.log(n)
+  console.log('data ends')
+}).on('close', () => {
+  console.log('data close')
+}).on('error', (error) => {
+  console.log('data read error', error)
+})
+```
+
+```js
+let http = require('http')
+let fs = require('fs')
+let request = require('request')
+
+http.createServer((req, res) => {
+  /*
+  fs.readFile('../buffer/logo.png', (err, data) => {
+    if (err) {
+      res.end('file not exist!')
+    } else {
+      res.writeHeader(200)
+      res.end(data)
+    }
+  })
+  */
+
+  // 设置下载响应头
+  res.setHeader('Content-Type', 'application/x-apple-diskimage')
+
+  fs.createReadStream('../buffer/logo.png').pipe(res)
+  // request('http://cn.vuejs.org/images/logo.png').pipe(res)
+
+}).listen(8091)
+```
+
+```js
+// 可读流构造函数
+let Readable = require('stream').Readable
+// 可写流构造函数
+let Writable = require('stream').Writable
+
+let readStream = new Readable()
+let writeStream = new Writable()
+
+// 向可读流push数据
+readStream.push('I ')
+readStream.push('Love ')
+readStream.push('Imooc\n ')
+readStream.push(null)
+
+writeStream._write = (chunk, encode, cb) => {
+  console.log(chunk.toString())
+  cb()
+}
+
+readStream.pipe(writeStream)
+```
+
+```js
+let stream = require('stream')
+let util = require('util')
+
+// 自定义可读流构造函数
+function ReadStream () {
+  stream.Readable.call(this)
+}
+util.inherits(ReadStream, stream.Readable)
+ReadStream.prototype._read = function () {
+  // 向可读流push数据
+  this.push('I ')
+  this.push('Love ')
+  this.push('Imooc\n ')
+  this.push(null)
+}
+
+// 自定义可写流构造函数
+function WriteStream () {
+  stream.Writable.call(this)
+  this._cached = Buffer.from('')
+}
+util.inherits(WriteStream, stream.Writable)
+WriteStream.prototype._write = function (chunk, encode, cb) {
+  console.log(chunk.toString())
+  cb()
+}
+
+// 自定义转换流构造函数
+function TransformStream () {
+  stream.Transform.call(this)
+}
+util.inherits(TransformStream, stream.Transform)
+TransformStream.prototype._transform = function (chunk, encode, cb) {
+  this.push(chunk)
+  cb()
+}
+TransformStream.prototype._flush = function (cb) {
+  this.push('Oh Yeah!')
+  cb()
+}
+
+let readStream = new ReadStream()
+let writeStream = new WriteStream()
+let transformStream = new TransformStream()
+
+readStream.pipe(transformStream).pipe(writeStream)
+```
+
+
