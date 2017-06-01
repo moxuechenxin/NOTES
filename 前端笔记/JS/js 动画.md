@@ -16,23 +16,25 @@ requestID = window.webkitRequestAnimationFrame(callback); // Older versions Chro
 - **如果想得到连贯的逐帧动画，函数中必须重新调用 requestAnimationFrame()**
 - 回调函数只会被传入一个`DOMHighResTimeStamp`参数，这个参数指示当前被 `requestAnimationFrame` 序列化的函数队列被触发的时间。因为很多个函数在这一帧被执行，所以每个函数都将被传入一个相同的时间戳，尽管经过了之前很多的计算工作。这个数值是一个小数，单位毫秒，精确度在 10 µs
 
-### window.cancelAnimationFrame(requestId)
-取消这个回调函数
-
 ```js
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 var start = null;
 var d = document.getElementById('SomeElementYouWantToAnimate');
-requestAnimationFrame(function(timestamp){
+
+function step(timestamp) {
   if (start === null) start = timestamp;
   var progress = timestamp - start;
   d.style.left = Math.min(progress/10, 200) + "px";
   if (progress < 2000) {
     requestAnimationFrame(step);
   }
-});
+}
+requestAnimationFrame(step);
 ```
+
+### window.cancelAnimationFrame(requestId)
+取消这个回调函数
 
 **Ployfill**
 ```js
@@ -66,5 +68,5 @@ requestAnimationFrame(function(timestamp){
 
 
 **参考**：
-- http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/
-- https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame
+- [张鑫旭：requestAnimationFrame](http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/)
+- [MDN：requestAnimationFrame](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame)
