@@ -8,7 +8,7 @@
 
 快捷键 | 说明
 ---|---
-`Control + G` | 选中相同部分 
+`Control + G` | 选中相同部分
 `Control + Command + G` | 选中所有相同部分
 `Control + shift + G` | 取消当前的选中
 `esc` | 取消所有的选中和多处光标
@@ -26,7 +26,7 @@
 `Command + D` | 复制代码副本(当前行或选中部分)
 `Command + delete` | 删除当前行
 `Control+Shift+J` |  清除换行或缩进变成单行
-`shift + enter` | 新建下一行
+`shift + Command + enter` | 新建下一行
 `Command + enter` |  新建上一行
 `Command + shift + U` |  大小写转换
 `Command + shift + [` 和 `Command + shift + ]` | 文件选项卡快速切换
