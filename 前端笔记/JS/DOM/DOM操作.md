@@ -16,7 +16,7 @@
 ### parentNode.`appendChild`(node)
 把新的子节点添加到指定节点，作为最后一个子节点。**返回被添加的节点**
 
-### existingParentNode.`insertBefore`(newNode [, existingNode]);
+### existingParentNode.`insertBefore`(newNode [, existingNode])
 在指定的子节点前面插入新的子节点，**返回插入的节点**。如果`existingNode`未指定，则 `insertBefore` 方法会在结尾插入 `newnode`。
 
 ### parentNode.`removeChild`(node)
