@@ -50,7 +50,7 @@ function getCookie(name) {
     // (;|$) 匹配以;号或以前面的字符为结尾的字符。
     if (name && new RegExp("(^| )" + name + "=([^;]*)(;|$)").exec(document.cookie)){
         return decodeURIComponent(RegExp.$2);
-    } 
+    }
 }
 
 ```
@@ -108,7 +108,7 @@ document.cookie="name=paul; expires=Thu, 18 Dec 2013 12:00:00 GMT; path=/;domain
 function setCookie(opts) {
     var name = opts.name;
     var value = opts.value;
-    var expires = opts.expires; // 
+    var expires = opts.expires; //
     var path = opts.path;
     var domain = opts.domain;
     var secure = opts.secure;
@@ -149,22 +149,22 @@ document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
 - 删除时不必指定 cookie 的值
 - 如果要删除非当前路径下的cookie，需制定`path`参数
 
-**删除指定cookie**
 ```js
-function removeCookie(name) {
-    document.cookie = name + "= ; expires=" + new Date(0);
-}
-```
-**清楚所有cookie**
-```js
-function clearCookie(path,domain){
-    // 获取所有cookie的key
-    var keys = document.cookie.match(/(?!\s)([^;\=]+)(?=\=.*(;|$))/g);
-    var forPath = path ? ";path=" + path : "";
-    forPath += domain ? ";domain=" + domain : "";
-    keys.forEach(function(item,index){
-        document.cookie = item + "= ; expires=" + new Date(0) + forPath;
-    });
+// 不传key参数表示删除所有cookie
+function removeCookie (key, path, domain) {
+  let keys = key
+  let forPath = ';path=' + (path || '/')
+  forPath += domain ? ';domain=' + domain : ''
+  if (key) {
+    if (!Array.isArray(key)) {
+      keys = [key]
+    }
+  } else {
+    keys = document.cookie.match(/(?!\s)([^;=]+)(?==.*(;|$))/g)
+  }
+  keys.forEach(function (item, index) {
+    document.cookie = item + '= ; expires=' + new Date(0) + forPath
+  })
 }
 ```
 

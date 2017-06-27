@@ -54,7 +54,7 @@ console.groupEnd();
 ```
 
 ### 占位符
-\- console上述的集中度支持printf的占位符格式，支持的占位符有：字符（%s）、整数（%d或%i）、浮点数（%f）和对象（%o）
+\- console上述的集中度支持printf的占位符格式，支持的占位符有：字符（%s）、整数（%d或%i）、浮点数（%f）、对象（%o或%O）和 应用提供的CSS（%c）
 
 ```js
  console.log("%d年%d月%d日",2011,3,26);  // 2011年3月26日
@@ -161,8 +161,7 @@ unmonitor(sayHello);
 监控元素上的click和mouseover事件
 
 
-
-
 参考：  
-https://github.com/dwqs/blog/issues/32    
-http://web.jobbole.com/87969/
+- [九个Console命令，让js调试更简单](https://github.com/dwqs/blog/issues/32)
+- [Chrome 控制台实用指南](http://web.jobbole.com/87969/)
+- [[译] 如何充分利用 JavaScript 控制台](https://juejin.im/post/59510ac45188250d8860c908)
