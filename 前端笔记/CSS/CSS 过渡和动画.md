@@ -17,8 +17,10 @@ Safari 通过私有属性 -webkit-transition 支持。
 指定CSS属性的name  
 **可选值**：none、all、property（定义应用过渡效果的 CSS 属性名称列表，列表以逗号分隔）
 
+
 - `transition-duration`   
  transition效果需要指定多少秒或毫秒才能完成（注意带单位s 或 ms）
+
 
 - `transition-timing-function`   
  指定transition效果的转速曲线  
@@ -29,6 +31,10 @@ Safari 通过私有属性 -webkit-transition 支持。
 `ease-out`（慢速结束）  
 `ease-in-out`（慢速开始，慢速结束）  
 `cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）
+`steps(n, start/end)` 指定一个阶跃函数
+`step-start` 等同于 `steps(1, start)`
+`step-end` 等同于 `steps(1, end)`
+
 
 - `transition-delay`  
 定义过渡效果开始之前需要等待的时间，以秒或毫秒计（注意带单位s / ms）
@@ -66,25 +72,33 @@ Chrome 和 Safari 通过私有属性 -webkit-animation 支持。
  @keyframes 动画指定名称   
 **可选值**：keyframename、none;
 
+
 - `animation-duration`   
  动画指定需要多少秒或毫秒完成（注意带单位s / ms）
+
 
 - `animation-timing-function`   
  设置动画将如何完成一个周期  
 **可选值**：   
-linear（线性渐变）   
-ease（慢速开始，然后变快，最后慢速结束）  
-ease-in（慢速开始）  
-ease-out（慢速结束）  
-ease-in-out（慢速开始，慢速结束）  
-cubic-bezier(n,n,n,n) （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）
+`linear`（线性渐变）   
+`ease`（慢速开始，然后变快，最后慢速结束）  
+`ease-in`（慢速开始）  
+`ease-out`（慢速结束）  
+`ease-in-out`（慢速开始，慢速结束）  
+`cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）
+`steps(n, start/end)` 指定一个阶跃函数
+`step-start` 等同于 `steps(1, start)`
+`step-end` 等同于 `steps(1, end)`
+
 
 - `animation-delay`  
 设置动画在启动前的延迟间隔。（注意带单位s / ms）
 
+
 - `animation-iteration-count`  
 定义动画的播放次数  
 **可选值**：num、infinite
+
 
 - `animation-direction`  
 指定是否应该轮流反向播放动画  
@@ -95,6 +109,7 @@ alternate（动画在奇数次（1、3、5...）正向播放，在偶数次（2�
 alternate-reverse（与alternate相反）  
 initial（设置该属性为它的默认值）  
 inherit
+
 
 - `animation-fill-mode`
 动画的最后（达到100%）时的状态  
@@ -137,3 +152,4 @@ none
 
 **参考**：
 - [CSS3 Transitions, Transforms和Animation使用简介与应用展示](http://www.zhangxinxu.com/wordpress/2010/11/css3-transitions-transforms-animation-introduction/)
+- [深入理解CSS3 Animation 帧动画](http://www.cnblogs.com/aaronjs/p/4642015.html)
