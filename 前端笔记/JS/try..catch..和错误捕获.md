@@ -68,6 +68,7 @@ img.src = ...;
 - window.onerror并不能捕获js执行错误，也就是说js执行错误后触发error事件处理函数，后续代码依旧不能执行了
 
 **参考**：
+- [JavaScript Errors 指南](https://github.com/Jocs/jocs.github.io/issues/1)
 - https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch
 - https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror
 - https://gist.github.com/neekey/4371159
