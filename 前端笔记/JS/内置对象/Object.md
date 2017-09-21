@@ -4,14 +4,14 @@
 ```js
 var obj = {
     name : "paul",
-    age : 18 
+    age : 18
 };
 ```
 ```js
 // ES6
 var name = "paul";
 var age = 18;
-var obj = {name,age} 
+var obj = {name,age}
 ```
 #### 2. 调用构造函数  
 ##### 2.1 使用`Object`构造函数
@@ -44,12 +44,12 @@ obj.age = 18;
 ```js
 var obj = {
     name : "paul",
-    age : 18 
+    age : 18
 };
 
 obj.name === obj["name"];  //true
 ```
-### `getter` 和 `setter` 
+### `getter` 和 `setter`
 
 ```js
 var obj = {
@@ -67,10 +67,7 @@ var obj = {
 
 ## 属性遍历
 ### for...in 循环
-循环遍历对象可枚举的属性(键)（包括继承的）
-
-### for...of 
-(ES6)  
+循环遍历对象可枚举的属性(键)（包括继承的） 
 
 ## 运算符
 运算符 | 用法 | 描述
@@ -161,7 +158,7 @@ o = Object.create(Object.prototype, {
   bar: {
     configurable: false,
     get: function() { return 10 },
-    set: function(value) { console.log("Setting `o.bar` to", value) 
+    set: function(value) { console.log("Setting `o.bar` to", value)
     }
 }})
 ```
@@ -200,7 +197,7 @@ var arr = ["a", "b", "c"];
 console.log(Object.keys(arr)); // ["0","1","2"]
 
 // 类数组对象
-var obj = { 
+var obj = {
     name : "paul",
     age : 18
 };
@@ -378,7 +375,7 @@ for (var key in obj) {
 ```
 
 #### propertyIsEnumerable()
-判断该对象指定的属性是否是`可枚举`的`自身属性` 
+判断该对象指定的属性是否是`可枚举`的`自身属性`
 **语法**：
 
 ```js
