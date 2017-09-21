@@ -36,6 +36,9 @@ Array.isArray() | (IE9+) 判断是否为数组对象
 Array.from() | (ES6) 将类数组对象或可遍历对象转为真正的数组
 Array.of() | (ES6) 将一组值（参数列表）转为数组
 
+**注意**:
+- `Array.from({length: 2})`和`[].slice.call({length: 2})`返回值不同，前者返回值为长度为2，每项值为undefined（可用于forEach等）；后者返回值为长度为2，每项未定义（不可用于forEach等）
+
 ### 实例方法
 ### 1. 增删 (直接修改原数组)
 方法 | 参数 |描述
@@ -200,7 +203,7 @@ var arr = ['one', 'two', 'three'];
 arr.reverse(); // ['three', 'two', 'one']
 ```
 #### splice()
-用新元素替换旧元素，以此修改数组的内容，(原数组被修改) (返回由被删除的元素组成的一个数组) 
+用新元素替换旧元素，以此修改数组的内容，(原数组被修改) (返回由被删除的元素组成的一个数组)
 
 **语法**：
 
@@ -240,7 +243,7 @@ arr4.splice(0,2,4,5,6); // [1,2]
 console.log(arr4); // [4,5,6,3]
 ```
 #### slice()
-浅复制数组的一部分到一个新的数组。 (返回截取部分组成的新数组) 
+浅复制数组的一部分到一个新的数组。 (返回截取部分组成的新数组)
 
 **语法**：
 
@@ -289,24 +292,24 @@ function toArray(arrLike){
             if (Object.prototype.toString.call(this) === '[object Array]'){
                 return _slice.call(this, begin, end);
             }
-           
+
             // For array like object we handle it ourselves.
             var i, cloned = [],
                 size, len = this.length;
-           
+
             // Handle negative value for "begin"
             var start = begin || 0;
             start = (start >= 0) ? start: len + start;
-           
+
             // Handle negative value for "end"
             var upTo = (end) ? end : len;
             if (end < 0) {
                 upTo = len + end;
             }
-           
+
             // Actual expected size of the slice
             size = upTo - start;
-           
+
             if (size > 0) {
                 cloned = new Array(size);
                 if (this.charAt) {
@@ -407,7 +410,7 @@ var arrLike = {
 // 添加属性2，值为c
 // 返回 3（属性length值）
 // arrLike => { 0: "a", 1: "b", 2: "c", length: 3 }
-[].push.call(arrLike, "c") 
+[].push.call(arrLike, "c")
 
 // 遍历类数组
 // 依次输出: "a", "b", "c"
