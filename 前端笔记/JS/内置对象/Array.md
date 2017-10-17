@@ -406,6 +406,9 @@ var arrLike = {
 
 // 转为数组
 [].slice.call(arrLike)
+// 生成长度为20每项值为undefined的数组 (可以用于forEach、map等遍历方法)
+Array.apply(null, { length: 20 })
+Array.from({length: 20})
 
 // 添加属性2，值为c
 // 返回 3（属性length值）
@@ -418,7 +421,6 @@ var arrLike = {
     console.log(item)
 })
 
-// ....
 ```
 
 **参考**：
