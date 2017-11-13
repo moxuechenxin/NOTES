@@ -40,5 +40,24 @@ EditorConfig文件使用INI格式，允许在分段名（section names）中使�
 
 - **insert_final_newline**：设为true表明使文件以一个空白行结尾，false反之
 
+### 实例
+
+```
+root = true
+
+# 对所有文件生效
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# 对后缀名为 md 的文件生效
+[*.md]
+trim_trailing_whitespace = false
+```
+
 **参考**：
 - [【译】EditorConfig介绍](http://www.alloyteam.com/2014/12/editor-config/)
