@@ -90,7 +90,7 @@ interact
 `#!/usr/bin/expect`告诉操作系统使用expect来执行
 
 ```bash
-#!/usr/bin/expect
+#!/usr/bin/expect -f
 spawn ssh $BUser@$BHost
 expect  "*password:" { send "$password\r" }
 expect  "$*" { send "pwd\r" }

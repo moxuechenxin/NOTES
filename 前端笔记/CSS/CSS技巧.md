@@ -37,10 +37,18 @@ div:hover:after{
 table tr:nth-child(n+5):nth-child(-n+10) {
     background-color: red;
 }
+
+/* 红白相间 */
+tbody tr:nth-of-type(2n) {  
+  background-color: red;
+}
+tbody tr:nth-of-type(2n+1) {
+  background-color: green;
+}
 ```
 
 ##  文字竖向排列（writing-mode）
-
+参考：[改变CSS世界纵横规则的writing-mode属性](http://www.zhangxinxu.com/wordpress/2016/04/css-writing-mode/)
 ```css
 .verticle-mode {
     writing-mode: tb-rl;
@@ -106,6 +114,9 @@ body {
   overflow:auto;
 }
 ```
+
+## 实现文字两端对齐
+`text-align-last: justify;`或`text-align: justify;`
 
 ## 改变 input 焦点光标的颜色（`caret-color`）
 
@@ -179,3 +190,4 @@ table {
 **参考**：
 - [CSS 黑魔法小技巧，让你少写不必要的JS，代码更优雅](https://github.com/jawil/blog/issues/29)
 - [你不知道的CSS（三）](https://segmentfault.com/a/1190000011194809)
+- [谈谈一些有趣的 CSS 话题](https://github.com/chokcoco/iCSS)
