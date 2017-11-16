@@ -19,4 +19,4 @@ url(\<url\>) |	设置某种媒体（图像，声音，视频等内容）
 inherit	| 指定的content属性的值，应该从父元素继承
 
 **参考**： 
-- http://www.runoob.com/cssref/pr-gen-content.html
+- [CSS content 属性(菜鸟教程)](http://www.runoob.com/cssref/pr-gen-content.html)
