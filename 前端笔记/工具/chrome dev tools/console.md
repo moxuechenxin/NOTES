@@ -1,9 +1,9 @@
 ### console.log家族
-- **console.log** ('普通信息')  
-\- console.log() 接收不定参数，参数间用逗号分隔，最终会输出会将它们以空白字符连接
-- **console.info** ('提示性信息')
-- **console.error** ('错误信息')
-- **console.warn** ('警示信息')
+- `console.log` ('普通信息')  
+\- `console.log()` 接收不定参数，参数间用逗号分隔，最终会输出会将它们以空白字符连接
+- `console.info` ('提示性信息')
+- `console.error` ('错误信息')
+- `console.warn` ('警示信息')
 
 ### console.dir()
 \- 显示一个对象所有的属性和方法
@@ -12,7 +12,7 @@
 \- 显示网页的某个节点（node）所包含的html/xml代码
 
 ### console.trace()
-\- 用来追踪函数的调用轨迹
+\- 用来追踪函数的调用轨迹（可以传入标题名作为参数）
 
 ```js
 /*函数是如何被调用的，在其中加入console.trace()方法就可以了*/
@@ -54,7 +54,7 @@ console.groupEnd();
 ```
 
 ### 占位符
-\- console上述的集中度支持printf的占位符格式，支持的占位符有：字符（%s）、整数（%d或%i）、浮点数（%f）、对象（%o或%O）和 应用提供的CSS（%c）
+\- console上述的集中度支持printf的占位符格式，支持的占位符有：字符（`%s`）、整数（`%d`或`%i`）、浮点数（`%f`）、对象（`%o`或`%O`）和 应用提供的CSS（`%c`）
 
 ```js
  console.log("%d年%d月%d日",2011,3,26);  // 2011年3月26日
@@ -126,8 +126,8 @@ $x("//p[a]"); // 匹配所有子节点包含a的p元素
 \- 重新获取上一次结果的值
 
 ### keys & values
-\- keys(obj) 返回传入对象所有属性名组成的数据  
-\- values(obj) 返回所有属性值组成的数组
+\- `keys(obj)` 返回传入对象所有属性名组成的数据  
+\- `values(obj)` 返回所有属性值组成的数组
 ```js
 var tfboy={name:'wayou',gender:'unknown',hobby:'opposite to the gender'};
 keys(tfboy); // ["name","gender","hobby"]
@@ -135,11 +135,12 @@ values(tfboy); // ["wayou","unknown","opposite to the gender"]
 
 ```
 ### monitor & unmonitor
-\- monitor(function):接收一个函数名作为参数，比如function a，每次a被执行了，都会在控制台输出一条信息，里面包含了函数的名称a及执行时所传入的参数  
-\- unmonitor(function)便是用来停止这一监听
+\- `monitor(funcName)`：接收一个函数名作为参数，比如function a，每次a被执行了，都会在控制台输出一条信息，里面包含了函数的名称a及执行时所传入的参数  
+\- `unmonitor(funcName)`便是用来停止这一监听
+
 ```js
 function sayHello(name){
-    alert('hello,'+name);
+    alert('hello,' + name);
 }
 monitor(sayHello);
 sayHello('damonare');
@@ -152,14 +153,26 @@ unmonitor(sayHello);
 \- 查看元素绑定的事件处理函数  
 
 ### monitorEvents(el [,event])
-\- 监控元素上发生的事件，并通过`console.log(e.type,e)`打印结果
-- monitorEvents(el)  
+\- 监控元素上发生的事件，并通过`console.log(e.type, e)`打印结果
+- `monitorEvents(el)`  
 监控元素上所关联的所有事件
-- monitorEvents(el,'click')  
+- `monitorEvents(el,'click')`  
 监控元素上的click事件
-- monitorEvents(el,['click','mouseover'])  
+- `monitorEvents(el,['click','mouseover'])` 
 监控元素上的click和mouseover事件
 
+### `debug`快速找到调试函数
+在控制台中使用 `debug(funcName)`，代码会在停止在进入这里指定的函数时（不适用于局部函数或匿名函数）
+
+```js
+function Fn () {}
+Fn.prototype.fn1 = function () {
+    console.log(1)
+}
+
+debug(new Fn().fn1)
+new Fn.fn1()
+```
 
 参考：  
 - [九个Console命令，让js调试更简单](https://github.com/dwqs/blog/issues/32)
