@@ -9,8 +9,11 @@
 - **backface-visibility**：定义当元素不面向屏幕时是否可见
 - **font-variant**：设置小型大写字母的字体显示文本
 
-### initial 关键字
+### [initial关键字](http://www.css88.com/book/css/values/textual/initial.htm)
 （IE不支持）`initial`属于`CSS-wide`关键字，这表示所有的属性都可以接受该值。如果你想重置某个属性为UA默认设置，那么就可以使用该值
+
+### [unset关键字](http://www.css88.com/book/css/values/textual/unset.htm)
+（IE不支持）一个属性定义了`unset`值，如果该属性是默认继承属性，该值等同于`inherit`，如果该属性是非继承属性，该值等同于`initial`。`unset`属于`CSS-wide`关键字，这表示所有的属性都可以接受该值
 
 ### [text-transform](http://www.w3school.com.cn/cssref/pr_text_text-transform.asp)
 控制文本的大小写  
