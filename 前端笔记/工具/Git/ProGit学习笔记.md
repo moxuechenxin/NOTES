@@ -16,6 +16,15 @@ git config --global user.email "email@example.com"
 ```shell
 git config --global core.editor emacs
 ```
+
+### alias
+```
+# 设置checkout的别名为co
+git config --global alias.co checkout
+# 设置log格式化输出别名为logs
+git config --global alias.logs "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+```
+ 
 ### 查看配置信息
 - 列出所有git当时能找到的配置（重复配置项以最后一个为准）
 ```shell
