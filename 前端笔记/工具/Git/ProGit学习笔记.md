@@ -95,6 +95,26 @@ git add .
 - 如果在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如[0-9] 表示匹配所有 0 到 9 的数字）。  
 - 使用两个星号（\*) 表示匹配任意中间目录，比如`a/**/z` 可以匹配 a/z,a/b/z 或 `a/b/c/z`等。
 
+```bash
+# no .a files
+*.a
+
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+
+# ignore all files in the build/ directory
+build/
+
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+
+# ignore all .pdf files in the doc/ directory
+doc/**/*.pdf
+```
+
 #### 查看已暂存和未暂存的修改
 ##### 1. 当前文件和暂存区域快照之间的差异(也就是修改之后还没有暂存起来的变化内容)
 
@@ -531,3 +551,6 @@ git merge-base <another-branch>...<current-branch>
 把 `...` 置于另一个分支名后来对该分支的最新提交与两个分支的共同祖先进行比较
 
 #### 将贡献的工作整合进来
+
+**参考：**
+- [ProGit（简体中文）](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%85%B3%E4%BA%8E%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6)

@@ -1,4 +1,7 @@
 ## 属性概览
+> 注：transform不能作用于行内元素（display: inline;）
+
+> 多个变换属性间用空格分隔（转换按顺序进行）
 ### 前置属性：
 - transform-origin
 - transform-style
