@@ -25,3 +25,26 @@ git merge newbranch
 # 1 file changed, 1 insertion(+)
 ```
 经过以上步骤，我们指定的email.json就不会被合并
+
+### git只clone仓库中指定子目录和指定文件
+
+```bash
+git init demo
+cd demo
+
+git config core.sparsecheckout true
+echo '/path/*' >> .git/info/sparse-checkout
+git remote add origin <remote-url>
+git pull origin
+```
+
+### 更新特定目录或文件
+```bash
+git fetch
+# -m 表示 --merge
+git checkout -m <版本号> <文件／文件夹>
+# 或
+git checkout origin/master -- <path/to/file>
+```
+
+[用 Git Subtree 在多个 Git 项目间双向同步子项目，附简明使用手册](https://segmentfault.com/a/1190000003969060)
