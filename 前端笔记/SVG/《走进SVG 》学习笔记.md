@@ -139,5 +139,233 @@ none	| 不保存宽高比。缩放图像适合整个viewbox，可能会发生图
 ```
 **说明**：viewport的尺寸为`500 * 75`， viewBox为 `0 0 250 25`，X轴方向的比值为 500 / 250 = 2, Y轴为 75 / 25 = 3, 则`meetOrSlic`为`meet`时，viewBox长宽都缩放2倍；为`slice`时，缩放3倍；为`none`时，宽度缩放2倍，长度缩放3倍（效果就是viewBox相关方向的尺寸也跟着缩放）
 
-## SVG中的图形分组
-## 坐标
+## 2.2 SVG中的图形分组
+**知识点**：
+- `<g>`标签创建分组
+- 属性继承
+- `transform`属性定义坐标变换
+- 可以嵌套使用
+
+```xml
+<svg xmlns="...">
+  <g stroke="green" 
+    fill="none" 
+    transform="translate(0, 50)">
+    <rect 
+      x="100" 
+      y="50"
+      width="100"
+      height="50">
+    </rect>
+    <rect 
+      x="140" 
+      y="100"
+      width="20"
+      height="120">
+    </rect>
+  </g>
+</svg>
+```
+
+## 2.3 坐标系统
+- 笛卡尔直角坐标系
+- 原点
+- 互相垂直的两条数轴
+- 角度定义（顺时针为正值）
+
+## 2.4 四个坐标系
+- **用户坐标系（原始坐标系）**：世界的坐标系
+- **自身坐标系**：每个图形元素或分组独立与生俱来
+- **前驱坐标系**：父容器的坐标系
+- **参考坐标系**：使用其它坐标系来考究自身的情况时使用
+
+#### 2.4.1 用户坐标系
+#### 2.4.2 自身坐标系
+#### 2.4.3 前驱坐标系
+#### 2.4.4 参考坐标系
+
+## 2.5 坐标变换
+- 定义
+- 线性变换
+- 线性变换列表
+- transform属性
+
+#### 2.5.1 坐标变换定义
+#### 2.5.4 transform属性
+注意先后顺序（从左到右）
+
+# 3 颜色、渐变和笔刷
+## 3.1 认识RGB和HSL
+#### 3.1.1 HSL
+- 三个分量分别表示颜色、饱和度和亮度
+- 格式：hsl(h, s%, l%)
+- 取值范围：
+  - h: `0 ~ 359`
+  - s, l: `0 ~ 100`
+
+#### 3.1.3 透明度
+- `rgba(r, g, b, a)`和`hsla(h, s%, l%, a)`表示带透明度的颜色 
+- `opacity`属性表示元素的透明度
+- `a`和`opacity`的取值范围：`0 ~ 1`
+
+## 3.2 线性渐变和径向渐变
+#### 3.2.1 线性渐变
+- `<linearGradient>`和`<stop>`
+- 定义方向
+- 关键点位置及颜色
+- `gradientUnits`
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient
+      id="grad1"
+      gradientUnits="objectBoundingBox"
+      x1="0" y1="0"
+      x2="1" y2="1">
+      <stop offset="0" stop-color="#1497FC" />
+      <stop offset="0.5" stop-color="#A469BE" />
+      <stop offset="1" stop-color="#FF8C00" />
+    </linearGradient>
+  </defs>
+  <rect 
+    x="100" y="100"
+    width="200" height="150"
+    fill="url(#grad1)"/>
+</svg>
+```
+
+**`<linearGradient>`属性**：
+- `gradientUnits`：
+  - `objectBoundingBox`: 默认值，使用对象确定相对位置的矢量点（相对值）
+  - `userSpaceOnUse`: 使用视图框以确定相对位置的矢量点（实际值）
+- `x1、y1`：渐变向量的起点（默认0％）
+- `x2、y2`：渐变向量的终点（默认100％）
+- `gradientTransform`： 适用于渐变的变换
+- `spreadMethod`
+  - `pad`
+  - `reflect`
+  - `repeat`
+- `xlink:href`：引用到另一个渐变，其属性值作为默认值。递归
+
+## 3.2.2 径向渐变
+- `<radialGradient>`和`<stop>`
+- 定义方向
+- 关键点位置及颜色
+- `gradientUnits`
+- 焦点位置
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient
+      id="grad2"
+      gradientUnits="objectBoundingBox"
+      cx="0.5" cy="0.5"
+      r="0.5"
+      fx="0.6" fy="0.3">
+      <stop offset="0" stop-color="#1497FC" />
+      <stop offset="0.5" stop-color="#A469BE" />
+      <stop offset="1" stop-color="#FF8C00" />
+    </radialGradient>
+  </defs>
+  <rect 
+    x="100" y="100"
+    width="200" height="150"
+    fill="url(#grad2)"/>
+</svg>
+```
+
+**`<radialGradient>`属性**：  
+同`linearGradient`的属性：
+`gradientUnits`、`gradientTransform`、`spreadMethod`、`xlink:href`
+- `cx、cy`：渐变的中心点（默认值为50%）
+- `r`：渐变的半径
+- `fx、fy`：渐变的焦点（默认值为0％）
+
+
+
+## 3.3 使用图案（笔刷）
+参考：[如何使用SVG图案(w3cplus)](https://www.w3cplus.com/svg/svg-pattern-element.html)
+
+一般用于SVG图形对象的填充`fill`或描边`stroke` (这个图形可以是一个SVG元素，也可以是位图图像，通过<pattern>元素在x轴或y轴方向以固定的间隔平铺著作权归作者所有)
+
+- 绘制纹理
+- `<pattern>`标签
+- `patternUnits`和`patternContentUnits`属性
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern
+      id="p1"
+      x="0" y="0"
+      width="0.2" height="0.2">
+      <circle
+        cx="10" cy="10" r="5"
+        fill="red">
+      </circle>
+      <polygon
+        points="30 10 60 50 0 50"
+        fill="green">
+      </polygon>
+    </pattern>
+  </defs>
+  <rect
+    x="100" y="100"
+    width="400" height="300"
+    fill="url(#p1)"
+    stroke="blue">
+  </rect>
+</svg>
+```
+**pattern属性**：
+- `patternUnits`：
+  - `userSpaceOnUse`：百分比单位
+  - `objectBoundingBox`：实际值单位
+- `patternContentUnits`：控制pattern内部元素的单位，含义同`patternUnits`
+  - `userSpaceOnUse`：
+  - `objectBoundingBox`：
+
+# 4 path
+## 4.1 Path概述
+[参考](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths)
+
+- 强大的绘图工具
+- 由命令及参数组组成的字符串，如：  
+  `<path d="M0,0L10,20C30-10,40,20,100,100" stroke="red">`
+
+**`L10,20`**:
+- `L`：命令
+- `10,20`：参数，参数之间可以用空格或逗号隔开（下一个数值是负数可不用分隔符）
+
+**Path命令汇总**：
+命令 | 含义
+--- | ---
+M/m (x,y)+ | 移动当前位置
+L/l (x,y)+ | 从当前位置绘制线段到指定位置
+H/h (x)+ | 从当前位置绘制水平线到达指定的x坐标
+V/v (y)+ | 从当前位置绘制竖直线到达指定的y坐标
+Z/z | 闭合当前路径
+C/c (x1,y1,x2,y2,x,y)+ | 从当前位置绘制三次贝塞尔曲线到指定位置
+S/s (x2,y2,x,y)+ | 从当前位置光滑绘制三次贝塞尔曲线到指定位置
+Q/q (x1,y1,x,y)+ | 从当前位置绘制二次贝塞尔曲线到指定位置
+T/t (x,y)+ | 从当前位置光滑绘制二次贝塞尔曲线到指定位置
+A/a (rx,ry,xr,laf,sf,x,y) | 从当前位置绘制弧线到指定位置
+
+**命令基本规律**：
+- 区分大小写：大写表示坐标参数为绝对位置，小写则为相对位置
+- 最后的参数表示最终要到达的位置
+- 上一个命令结束的位置就是下一个命令开始的位置
+- 命令可以重复参数表示重复执行同一条命令
+
+## 4.2 移动和直线命令
+## 4.3 弧线命令(`A/a`)
+参数：`(rx,ry,xr,laf,sf,x,y)`  
+实际是取的椭圆的一部分
+
+- `rx/ry`：（radius-x/y）弧线所在椭圆的x、y半轴长
+- `xr`：（xAxis-rotation）弧线所在椭圆的长轴角度（顺时针方向为正）
+- `laf`：（large-arc-flag）0表示短弧线，1表示长弧线
+- `sf`：（sweep-flag）0表示逆时针画弧，1表示顺时针画弧
+- `x/y`：终点位置
