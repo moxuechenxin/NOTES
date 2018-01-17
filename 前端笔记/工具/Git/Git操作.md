@@ -51,6 +51,10 @@
 \- 以上操作会删除git log记录  
 \- git reset --hard HASH 返回到某个节点，不保留修改。  
 \- git reset --soft HASH 返回到某个节点。保留修改。
+
+**注意**：  
+`git reflog` 可以查看所有分支的所有操作记录（包括（包括commit和reset的操作），包括已经被删除的commit记录，git log则不能察看已经删除了的commit记录
+
 #### 撤销修改
 ##### 修改后 未add（添加到暂存区） 需要撤销修改时：  
 \- git checkout -- example.txt 或 手动删除工作区修改  
