@@ -347,10 +347,10 @@ L/l (x,y)+ | 从当前位置绘制线段到指定位置
 H/h (x)+ | 从当前位置绘制水平线到达指定的x坐标
 V/v (y)+ | 从当前位置绘制竖直线到达指定的y坐标
 Z/z | 闭合当前路径
-C/c (x1,y1,x2,y2,x,y)+ | 从当前位置绘制三次贝塞尔曲线到指定位置
-S/s (x2,y2,x,y)+ | 从当前位置光滑绘制三次贝塞尔曲线到指定位置
 Q/q (x1,y1,x,y)+ | 从当前位置绘制二次贝塞尔曲线到指定位置
 T/t (x,y)+ | 从当前位置光滑绘制二次贝塞尔曲线到指定位置
+C/c (x1,y1,x2,y2,x,y)+ | 从当前位置绘制三次贝塞尔曲线到指定位置
+S/s (x2,y2,x,y)+ | 从当前位置光滑绘制三次贝塞尔曲线到指定位置
 A/a (rx,ry,xr,laf,sf,x,y) | 从当前位置绘制弧线到指定位置
 
 **命令基本规律**：
@@ -369,3 +369,99 @@ A/a (rx,ry,xr,laf,sf,x,y) | 从当前位置绘制弧线到指定位置
 - `laf`：（large-arc-flag）0表示短弧线，1表示长弧线
 - `sf`：（sweep-flag）0表示逆时针画弧，1表示顺时针画弧
 - `x/y`：终点位置
+
+## 4.4 贝塞尔曲线
+> `x y`为结束点坐标
+### 二次贝塞尔曲线命令(Q/q)
+参数：`Q x1 y1 x y`  
+
+**二次贝塞尔光滑曲线(T/t)**：  
+C1是上一段曲线的控制点关于当前曲线起始点的镜像位置
+
+
+### 三次贝塞尔曲线命令(C/c)
+参数：`C x1 y1 x2 y2 x y`
+
+**三次贝塞尔光滑曲线(S/s)**：  
+C1是上一段曲线的控制点2关于当前曲线起始点的镜像位置
+
+# 5 SVG文本
+## 5.1 `<text>`和`<tspan>`创建文本
+### `<text>`
+**属性**：
+> 文字的位置为左边线和基线的交点
+- `x/y`：文字的起点位置坐标（`y`表示基线位置）
+- `dx/dy`：文字的偏移（多个值表示相应方向对应次序开始的文字的偏移位置）
+
+```xml
+<!-- 
+  文字的起始位置为 1000／1000
+  A的位置为 (1000 + 100) / (1000 + 100)
+  B的位置为 (1000 + 100 + 200) / (1000 + 100 + 200)
+  C的位置为 (1000 + 100 + 200 + 300) / (1000 + 100 + 200 + 300)
+-->
+<svg>
+  <text 
+    style="font-size: 50px;"
+    x="1000" y="1000" 
+    dx="100 200 300" dy="100 200 300">ABC</text>
+</svg>
+```
+
+### `<tspan>`
+
+```xml
+<svg>
+  <text dy="200 0 200">
+    <!--
+      tspan的dx/dy会传递下去
+      tspan的dx/dy会覆盖text的dx/dy，后面的tspan会覆盖前面的
+    -->
+    <tspan 
+      fill="red"
+      dy="100 100 100">AB</tspan>
+    <tspan 
+      stroke="green" 
+      stroke-width="2" 
+      fill="none">CDE</tspan>
+  </text>
+</svg>
+```
+## 5.2 垂直居中问题
+- `text-anchor`：水平居中属性
+- `dominant-baseline`：垂直居中属性
+- 模拟垂直居中
+
+### `text-anchor`
+可选值：
+- start
+- middle
+- end
+
+### `dominant-baseline`
+可选值：
+- auto
+- use-script
+- no-change
+- reset-size
+- ideographic
+- alphabetic
+- hanging
+- mathematical
+- central
+- middle
+- text-after-edge
+- text-before-edge
+- text-top
+- text-bottom
+
+
+
+### 模拟居中（使用`dy`模拟垂直居中）
+假设文字高度为`h`,上边缘为`by`,下边缘为`by + h`, 基线位置为`y`
+- top: 设置dy=`y - by`
+- middle: 设置dy=`y - (by + h/2)`
+- bottom: 设置dy=`y - (by + h)`
+
+## 5.3 `<textPath>`让文本在指定路径上排列
+## 5.4 `<a>`插入超链接
