@@ -386,7 +386,7 @@ C1是上一段曲线的控制点关于当前曲线起始点的镜像位置
 C1是上一段曲线的控制点2关于当前曲线起始点的镜像位置
 
 # 5 SVG文本
-## 5.1 `<text>`和`<tspan>`创建文本
+## 5.1 `<textPath>`和`<tspan>`创建文本
 ### `<text>`
 **属性**：
 > 文字的位置为左边线和基线的交点
@@ -464,4 +464,39 @@ C1是上一段曲线的控制点2关于当前曲线起始点的镜像位置
 - bottom: 设置dy=`y - (by + h)`
 
 ## 5.3 `<textPath>`让文本在指定路径上排列
+
+```xml
+<svg>
+  <path 
+    id="path1"
+    d="M100 200 Q200 100 300 200 T500 200"
+    stroke="rgb(0, 255, 0)"
+    fill="none"/>
+  <text
+    style="font-size: 24px;">
+    <textPath xlink:href="#path1">
+    这个文字先上去，又下来了。Upside down in english!
+    </textPath>
+  </text>
+</svg>
+```
+
+属性：
+- `x/y`：设置`<text>/<tspan>`的属性（x表示切线方向, y无效果）
+- `text-anchor`：文本长度的中间位置的对齐(`start`, `middle`, `end`)
+- `startOffset`：文本在路径上的起点位置(%值，以路径为基础)
+- `dx/dy`： 设置`<text>/<tspan>`的属性, 切线(`dx`)和法线(`dy`)方向的偏移
+
+### `<textPath>`路径文本：脚本控制
+- `setAttributeNS()`方法设置`xlink:href`属性
+
+```js
+const SVG_NS = 'http://www.w3.org/2000/svg'
+const XLINK_NS = 'http://www.w3.org/2000/xlink'
+```
+
 ## 5.4 `<a>`插入超链接
+- 可以加到任意的图形上
+- `xlink:href`指定链接地址
+- `xlink:title`指定链接提示
+- `target`指定打开目标
