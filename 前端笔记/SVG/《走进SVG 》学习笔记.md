@@ -102,7 +102,7 @@ points="x1 y1 x2 y2 x3 y3 x4 y4 ..."
 - 如果宽高比和viewport不同，使用`preserveAspectRatio`控制显示行为
 
 **preserveAspectRatio**：  
-**语法**：preserveAspectRatio = [defer] <align> [meetOrSlice>]  
+**语法**：preserveAspectRatio = [defer] <align> [meetOrSlice]  
 **参数**：
 - `defer`: 可选，仅在`image`元素上应用`preserveAspectRatio`属性时才使用 
 - `align`: 默认值`xMidYMid`，指定`viewbox`在viewport中的对齐方式（除了`none`其余值由两部分组成：X方向的对齐方式、Y方向的对齐方式）
@@ -495,8 +495,156 @@ const SVG_NS = 'http://www.w3.org/2000/svg'
 const XLINK_NS = 'http://www.w3.org/2000/xlink'
 ```
 
-## 5.4 `<a>`插入超链接
+## 5.4 `<animate>`插入超链接
 - 可以加到任意的图形上
 - `xlink:href`指定链接地址
 - `xlink:title`指定链接提示
 - `target`指定打开目标
+
+# 6 图形的引用、裁切和蒙版
+## 6.1 `<use>`标签创建图形引用
+```xml
+<svg 
+     width="100%" 
+     height="100%"
+     viewBox="-400 -300 800 600"
+     preserveAspectRatio="xMidYMid slice">
+     <!-- 定义 -->
+     <defs>
+      <polygon 
+        id="star"
+        points="0 -10 2 -2 10 0 2 2 0 10 -2 2 -10 0 -2 -2"
+        fill="white">
+      </polygon>
+     </defs>
+     <!-- 分组 -->
+     <g id="star-group">
+      <!-- 使用定义 -->
+      <use xlink:href="#star"></use>
+     </g>
+</svg>
+```
+
+## 6.2 `<clipPath>`标签裁切图形
+保留重叠的区域`clip-path="url(#clip-id)"`
+```xml
+```
+
+## 6.3 `<mask>`标签创建蒙版
+通过亮度来决定被它遮罩的地方显示得多少（白色完全显示，黑色不显示, 其它颜色则是半透明）
+```xml
+<g id="moon-group">
+  <mask id="moon-mask">
+    <circle cx="-250" cy="-150" r="100" fill="white"></circle>
+    <circle cx="-200" cy="-200" r="100" fill="black"></circle>
+  </mask>
+  <circle 
+    cx="-250" 
+    cy="-150" 
+    r="100" 
+    fill="yellow"
+    mask="url(#moon-mask)"></circle>
+</g>
+```
+
+# 7 SVG动画
+## 7.1 动画原理
+## 7.2 SMIL for SVG
+> 参考：[张鑫旭SMIL animation动画详解](http://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/)
+
+### 动画标签
+`<animate>`、`<animateTransform>`、`<animateMotion>`
+
+### 动画元素、属性定位以及动画参数设置
+- `attributeName`、`attributeType`
+- `from`、`to`、`dur`、`repeatCount`、`fill`...
+- `calcMode`...
+
+### 设置动画（定位动画目标）
+- 定位  
+`<animate xlink:href="url(#rect1)"></animate>`
+- 被包含在目标元素中
+```xml
+<rect x="0" ...>
+  <animate></animate>
+</rect>
+```
+
+### 基本动画
+设置要进行动画的属性以及变化范围、时间长度(动画可叠加)
+```xml
+<animate 
+  xlink:href="url(#rect1)"
+  attributeType="XML" <!-- auto / XML / css -->
+  attributeName="x"
+  from="10"
+  to="110"
+  dur="3s"
+  fill="freeze"> <!-- remove / freeze -->
+</animate>
+```
+
+```xml
+<svg>
+  <rect x="100" y="100" width="100" height="100" fill="red">
+    <animate
+      id="goright"
+      attributeType="XML"
+      attributeName="x"
+      begin="0; goleft.end + 1s"
+      from="100"
+      to="500"
+      dur="3s"
+      fill="freeze">
+    </animate>
+    <animate
+      id="goleft"
+      attributeType="XML"
+      attributeName="x"
+      begin="goright.end + 1s"
+      from="500"
+      to="100"
+      dur="3s"
+      fill="freeze">
+    </animate>
+    <animate
+      attributeType="XML"
+      attributeName="fill"
+      from="red"
+      to="yellow"
+      dur="6s"
+      fill="freeze"
+      repeatCount="100"> <!-- infinite -->
+    </animate>
+  </rect>
+</svg>
+```
+
+### 变换动画
+设置要进行动画的属性以及变化范围、时间长度
+```xml
+<animateTransform 
+  xlink:href="url(#rect1)"
+  attributeName="transform"
+  attributeType="XML"
+  type="translate"
+  from="0 0"
+  to="100 100"
+  dur="3s">
+</animateTransform>
+```
+### 轨迹动画
+```xml
+<animateMotion 
+  xlink:href="url(#rect1)"
+  path="M0,0h100v100h-100v-100z"
+  rotate="auto"
+  duration="3s">
+  <!--
+  或
+  <mpath xlink:href="#motion-path"></mpath> 
+  -->
+</animateMotion>
+```
+
+## 7.3 脚本动画
