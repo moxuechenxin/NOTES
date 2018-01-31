@@ -434,34 +434,34 @@ C1是上一段曲线的控制点2关于当前曲线起始点的镜像位置
 
 ### `text-anchor`
 可选值：
-- start
-- middle
-- end
+- `start`
+- `middle`
+- `end`
 
 ### `dominant-baseline`
 可选值：
-- auto
-- use-script
-- no-change
-- reset-size
-- ideographic
-- alphabetic
-- hanging
-- mathematical
-- central
-- middle
-- text-after-edge
-- text-before-edge
-- text-top
-- text-bottom
+- `auto`
+- `use-script`
+- `no-change`
+- `reset-size`
+- `ideographic`
+- `alphabetic`
+- `hanging`
+- `mathematical`
+- `central`
+- `middle`
+- `text-after-edge`
+- `text-before-edge`
+- `text-top`
+- `text-bottom`
 
 
 
 ### 模拟居中（使用`dy`模拟垂直居中）
 假设文字高度为`h`,上边缘为`by`,下边缘为`by + h`, 基线位置为`y`
-- top: 设置dy=`y - by`
-- middle: 设置dy=`y - (by + h/2)`
-- bottom: 设置dy=`y - (by + h)`
+- `top`: 设置dy=`y - by`
+- `middle`: 设置dy=`y - (by + h/2)`
+- `bottom`: 设置dy=`y - (by + h)`
 
 ## 5.3 `<textPath>`让文本在指定路径上排列
 
@@ -635,6 +635,7 @@ const XLINK_NS = 'http://www.w3.org/2000/xlink'
 ```
 ### 轨迹动画
 ```xml
+<!-- rotate="auto"表示沿路径切线方向运动 -->
 <animateMotion 
   xlink:href="url(#rect1)"
   path="M0,0h100v100h-100v-100z"
@@ -648,3 +649,7 @@ const XLINK_NS = 'http://www.w3.org/2000/xlink'
 ```
 
 ## 7.3 脚本动画
+- 核心思想  
+  - `requestAnimationFrame(updateFn)`
+- 示例  
+  - 力导向图
