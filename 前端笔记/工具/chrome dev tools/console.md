@@ -58,6 +58,8 @@ console.groupEnd();
 
 ```js
  console.log("%d年%d月%d日",2011,3,26);  // 2011年3月26日
+
+ console.log("%chello", "color:red;") // 输出红色字体的'hello'
 ```
 ### console.table()
 \- 输出表格
