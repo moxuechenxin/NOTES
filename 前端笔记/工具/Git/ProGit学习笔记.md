@@ -194,6 +194,21 @@ git log
 
 各种配置选项，请查看文档
 
+### 隐藏工作区
+```bash
+# 隐藏当前工作区修改
+git stash
+
+# 工作区隐藏列表
+git stash list
+
+# 恢复工作区的修改
+git stash apply # stash内容并不删除，需要使用命令 git stash drop 来删除
+git stash pop # 恢复的同时把stash内容也删除了
+```
+
+
+
 ### 撤消操作
 #### 1. 重新提交
 ```shell
@@ -209,7 +224,12 @@ git reset HEAD <file>
 ```shell
 git checkout -- <file>
 ```
-**注意**： 这是一个危险的命令，对那个文件做的任何修改都会消失
+**注意**： 这是一个危险的命令，对那个文件做的任何修改都会消失  
+**两种情况**：
+- 文件在工作区，未放到暂存区(`git add <file>`后)  
+  - 执行`git checkout`则文件恢复到工作区的上一个版本
+- 文件在暂存区
+  - 执行`git checkout`则文件恢复到刚放到暂存区时的状态
 
 ### 远程仓库的使用
 #### 查看远程仓库
@@ -350,9 +370,15 @@ git log --oneline --decorate
 git checkout <branch-name>
 ```
 #### 创建并切换到新分支
-```shell
+```bash
 git checkout -b <new-branch-name>
 ```
+
+```bash
+# 基于历史提交版本签出一个分支
+git checkout -b <branch-name> <commit-id>
+```
+
 ### 分支的新建与合并
 #### 将某分支合并到当前分支
 ```shell
