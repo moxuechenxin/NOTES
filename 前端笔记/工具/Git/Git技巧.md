@@ -47,4 +47,16 @@ git checkout -m <版本号> <文件／文件夹>
 git checkout origin/master -- <path/to/file>
 ```
 
-[用 Git Subtree 在多个 Git 项目间双向同步子项目，附简明使用手册](https://segmentfault.com/a/1190000003969060)
+### [用 Git Subtree 在多个 Git 项目间双向同步子项目，附简明使用手册](https://segmentfault.com/a/1190000003969060)
+
+### 查看某文件的修改历史
+```bash
+# 推荐
+# 查看指定提交的指定文件的修改
+git show <commit-id> <file>
+```
+
+```bash
+# 查看指定提交id之前修改了指定文件的提交历史（按补丁格式显示每个更新之间的差异）
+git log -p <commit-id> -- <file>
+```

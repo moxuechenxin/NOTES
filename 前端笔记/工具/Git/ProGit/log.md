@@ -132,6 +132,7 @@ git log --date=format:'%Y-%m-%d %H:%M:%S'
 `-S` | 仅显示添加或移除了某个关键字的提交（`-G`用正则匹配）
 `--no-merges` | 过滤掉merge commit
 `--merges` | 只显示merge commit
+`-- <dir/file>` | 限制路径/文件
 
 - 时间限制
 
@@ -210,8 +211,6 @@ git log --grep="update"
 只显示提交说明中有`update`字符的提交  
 
 **注意**：如果想同时使用`--grep`和`--author`，必须在附加一个`--all-match`参数
-
-
 
 **参考**：
 - [git log命令全解析，打log还能这么随心所欲！](https://www.cnblogs.com/bellkosmos/p/5923439.html)
