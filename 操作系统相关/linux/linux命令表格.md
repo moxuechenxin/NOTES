@@ -183,14 +183,17 @@ chmod 666 a.txt
 ## 进程
 ### 查看进程号（PID）
 ```shell
-ps aux|less
+ps aux | less
 ```
-`aux`：表示查看所有进程
+`aux`：表示查看所有进程  
 `|less`：用分页器显示查询结果
 
 ### 结束进程
 ```shell
 kill <PID>
+
+# -s 9 指定了传递给进程的信号是９，即强制、尽快终止进程
+kill -s 9 <PID>
 ```
 
 ## 查找

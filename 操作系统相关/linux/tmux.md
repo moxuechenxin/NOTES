@@ -77,11 +77,13 @@ brew install tmux
 ## 操作
 #### 新建会话
 ```bash
+# tmux new-session <session-name>
 tmux new -s <session-name>
 ```
 
 #### 查看已创建的会话
 ```bash
+# tmux list-session
 tmux ls
 ```
 
@@ -100,4 +102,12 @@ tmux detach
 ```bash
 tmux kill-session -t <session-name>
 ```
+### 会话重命名
+```bash
+tmux rename-session -t <session-name>
+```
 
+### 
+```bash
+tmux choose-session -t
+```
