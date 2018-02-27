@@ -30,10 +30,10 @@ Safari 通过私有属性 -webkit-transition 支持。
 `ease-in`（慢速开始）  
 `ease-out`（慢速结束）  
 `ease-in-out`（慢速开始，慢速结束）  
-`cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）
-`steps(n, start/end)` 指定一个阶跃函数
-`step-start` 等同于 `steps(1, start)`
-`step-end` 等同于 `steps(1, end)`
+`cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）  
+`steps(n, start/end)` 指定一个阶跃函数  
+`step-start` 等同于 `steps(1, start)`  
+`step-end` 等同于 `steps(1, end)`  
 
 
 - `transition-delay`  
@@ -85,10 +85,10 @@ Chrome 和 Safari 通过私有属性 -webkit-animation 支持。
 `ease-in`（慢速开始）  
 `ease-out`（慢速结束）  
 `ease-in-out`（慢速开始，慢速结束）  
-`cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）
-`steps(n, start/end)` 指定一个阶跃函数
-`step-start` 等同于 `steps(1, start)`
-`step-end` 等同于 `steps(1, end)`
+`cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）  
+`steps(n, start/end)` 指定一个阶跃函数  
+`step-start` 等同于 `steps(1, start)`    
+`step-end` 等同于 `steps(1, end)`    
 
 
 - `animation-delay`  
