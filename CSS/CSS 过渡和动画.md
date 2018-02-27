@@ -23,7 +23,7 @@ Safari 通过私有属性 -webkit-transition 支持。
 
 
 - `transition-timing-function`   
- 指定transition效果的转速曲线  
+ 指定transition效果的转速曲线（作用于每两个关键帧之间）  
 **可选值**：   
 `linear`（线性渐变）   
 `ease`（慢速开始，然后变快，最后慢速结束）  
@@ -78,7 +78,7 @@ Chrome 和 Safari 通过私有属性 -webkit-animation 支持。
 
 
 - `animation-timing-function`   
- 设置动画将如何完成一个周期  
+ 设置动画将如何完成一个周期（作用于每两个关键帧之间）  
 **可选值**：   
 `linear`（线性渐变）   
 `ease`（慢速开始，然后变快，最后慢速结束）  
