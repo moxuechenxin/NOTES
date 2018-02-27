@@ -23,17 +23,17 @@ Safari 通过私有属性 -webkit-transition 支持。
 
 
 - `transition-timing-function`   
- 指定transition效果的转速曲线  
+ 指定transition效果的转速曲线（作用于每两个关键帧之间）  
 **可选值**：   
 `linear`（线性渐变）   
 `ease`（慢速开始，然后变快，最后慢速结束）  
 `ease-in`（慢速开始）  
 `ease-out`（慢速结束）  
 `ease-in-out`（慢速开始，慢速结束）  
-`cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）
-`steps(n, start/end)` 指定一个阶跃函数
-`step-start` 等同于 `steps(1, start)`
-`step-end` 等同于 `steps(1, end)`
+`cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）  
+`steps(n, start/end)` 指定一个阶跃函数  
+`step-start` 等同于 `steps(1, start)`  
+`step-end` 等同于 `steps(1, end)`  
 
 
 - `transition-delay`  
@@ -78,17 +78,17 @@ Chrome 和 Safari 通过私有属性 -webkit-animation 支持。
 
 
 - `animation-timing-function`   
- 设置动画将如何完成一个周期  
+ 设置动画将如何完成一个周期（作用于每两个关键帧之间）  
 **可选值**：   
 `linear`（线性渐变）   
 `ease`（慢速开始，然后变快，最后慢速结束）  
 `ease-in`（慢速开始）  
 `ease-out`（慢速结束）  
 `ease-in-out`（慢速开始，慢速结束）  
-`cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）
-`steps(n, start/end)` 指定一个阶跃函数
-`step-start` 等同于 `steps(1, start)`
-`step-end` 等同于 `steps(1, end)`
+`cubic-bezier(n,n,n,n)` （在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值）  
+`steps(n, start/end)` 指定一个阶跃函数  
+`step-start` 等同于 `steps(1, start)`    
+`step-end` 等同于 `steps(1, end)`    
 
 
 - `animation-delay`  
