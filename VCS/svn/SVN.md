@@ -5,7 +5,7 @@ svn checkout <remote-url> [<local-path>] [--username <username>] [--password <pa
 ```
 不指定本地目录全路径`<local-path>`，则检出到当前目录下
 
-## 导出(不带.svn文件夹)
+## 导出(不带.svn文件夹)
 ```bash
 svn export [-r <版本号>] <remote-path> [<local-path>] [--username <username>] [--password <password>]
 ```
@@ -14,7 +14,7 @@ svn export [-r <版本号>] <remote-path> [<local-path>] [--username <username>]
 ```bash
 svn add <filename>
 ```
-文件名`<filename>`支持glob匹配
+文件名`<filename>`支持glob匹配
 
 ## 提交到服务器
 ```bash
@@ -23,7 +23,7 @@ svn add <filename>
 git commit -m <commit-msg> [-N] [--no-unlock] <commit-path>
 ```
 
-## 更新本地仓库
+## 更新本地仓库
 ```bash
 git update [-r <修正版本>] <local-path>
 ```
@@ -47,7 +47,7 @@ svn unlock <local-path>
 svn diff [-r <修正版本号1>:<修正版本号2>] <local-path>
 ```
 
-## 查看目录状态
+## 查看目录状态
 ```bash
 # svn st
 svn status [<local-path>] 
@@ -76,7 +76,7 @@ svn info <path>
 svn list <remote-path>
 ```
 
-## 撤销本地修改
+## 撤销本地修改
 ```bash
 svn revert [--recursive/-r] <file/dir>
 ```
@@ -89,6 +89,12 @@ svn switch <remote-path> <local-path>
 ## 解决冲突
 ```bash
 svn resolved <local-path>
+```
+## 设置忽略
+```bash
+# 在项目根目录执行
+# 指定svn编辑器：在`~/.bash_profile`加入`export SVN_EDITOR=vim`
+svn propedit svn:ignore .
 ```
 
 - - -
