@@ -11,6 +11,7 @@ expect [-dDinN] [-c cmds] [ [-[f|b]] cmdfile ] [args]
 ```
 
 **选项**：
+
 选项 | 说明
 ---|---
 -c | 可执行命令的前置符，其后的命令应该被引起来，该选项可以使用多次，每个-c可以跟多个以分号分隔的命令。命令按照出现的顺序执行,例如：`expect -c "puts first\n; puts second" -c "puts three"`
@@ -179,12 +180,12 @@ Expect退出
 ## 内部变量
 变量 | 含义
 ---|---
-`$argv` | expect运行参数集合(非内部可选项)
+`$argv` | expect运行参数集合(非内部可选项)
 `$argc` | `$argv`的长度
-`$expect_out(buffer)` | 满足匹配的字符串中从起始位置到匹配字串。使用正则时，子项保存在`$expect_out(<n>,string)`中（n取1～9，0表示整个字符串）
+`$expect_out(buffer)` | 满足匹配的字符串中从起始位置到匹配字串。使用正则时，子项保存在`$expect_out(<n>,string)`中（n取1～9，0表示整个字符串）
 
 注：
-- 集合类变量可以通过`[lindex <var> <index> ]`取到指定项
+- 集合类变量可以通过`[lindex <var> <index> ]`取到指定项
 
 - - -
 **参考**：
