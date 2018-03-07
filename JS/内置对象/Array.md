@@ -91,6 +91,7 @@ var arr2 = Array.apply(null, Array(3));
 
 ### 5.迭代
 (ES5) 参数：( function (prev,current,index,array), startVal )
+
 方法 | 描述
 ---|---
 reduce |  从数组起始位置开始迭代（返回累积操作的结果）
