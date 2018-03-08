@@ -89,7 +89,7 @@ tmux ls
 
 #### 进入一个已知会话
 ```bash
-# attach可以换为缩写a: tmux a -t <session-name>
+# attach可以换为缩写a: tmux a -t <session-name>
 tmux attach -t <session-name>
 ```
 
@@ -102,7 +102,7 @@ tmux detach
 ```bash
 tmux kill-session -t <session-name>
 ```
-### 会话重命名
+### 会话重命名
 ```bash
 tmux rename-session -t <session-name>
 ```
@@ -110,4 +110,12 @@ tmux rename-session -t <session-name>
 ### 
 ```bash
 tmux choose-session -t
+```
+
+## 设置
+#### 用鼠标滚轮来卷动窗口内容
+> 需先按`ctrl+b`，然后`:`加上以下内容（需要按`ctrl+b`开启设置的功能）
+```bash
+# 对所有窗口开启: setw -g mode-mouse on
+setw mode-mouse on
 ```
