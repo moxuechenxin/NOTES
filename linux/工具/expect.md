@@ -189,5 +189,6 @@ Expect退出
 
 - - -
 **参考**：
+- [Expect学习笔记](http://blog.csdn.net/boyishachang/article/details/8677936)
 - [Expect使用小记](https://www.cnblogs.com/yinghao1991/p/6926125.html)
 - [Shell脚本学习之expect命令](https://www.cnblogs.com/lixigang/articles/4849527.html)
