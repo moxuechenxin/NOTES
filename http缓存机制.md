@@ -77,6 +77,7 @@ Cache-Control:private,no-cache
 判断资源是否修改的一种方法，并不依赖资源的修改时间，而是根据资源内容计算出一个唯一的值，譬如计算文件的MD5值
 - **Last-Modified (响应头)  和 If-Modified-Since (请求头)**  
 标志该资源的最近修改时间  
+**注意**：如果响应头中有 `Last-modified` 而没有 `Expire` 或 `Cache-Control` 时，浏览器会有自己的算法来推算出一个时间缓存该文件多久，不同浏览器得出的时间不一样，所以 `Last-modified` 要记得配合 `Expires/Cache-Control` 使用
 
 **说明：** 浏览器在缓存资源的同时也会把这些头信息缓存起来，在请求发起的时候，如果之前缓存了`Last-Modified`，在发起请求的时候就会带一个`If-Modified-Since`的头，`If-Modified-Since`值为缓存的`Last-Modified的值`；如果返回的是`ETag`，则在发起请求的时候就会带一个`If-None-Match`的头，`If-None-Match`值为缓存的`ETag`的值。（服务器在接收到后也会做比对，如果相同则命中**协商缓存**，返回`304`，从缓存中读取资源）
 
