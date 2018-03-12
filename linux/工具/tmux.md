@@ -119,3 +119,7 @@ tmux choose-session -t
 # 对所有窗口开启: setw -g mode-mouse on
 setw mode-mouse on
 ```
+
+- - -
+**参考**：
+- [tmux(图灵社区)](http://www.ituring.com.cn/space/personalarticle/55082?pcid=477)

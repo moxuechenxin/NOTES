@@ -30,3 +30,4 @@ echo "/opt/temp/swap           swap                    swap    defaults        0
 - - -
 **参考**：
 - [linux增大swap空间](https://blog.slogra.com/post-246.html)
+- [Swap交换分区概念](https://www.cnblogs.com/kerrycode/p/5246383.html)
