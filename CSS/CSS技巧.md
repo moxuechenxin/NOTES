@@ -47,6 +47,34 @@ tbody tr:nth-of-type(2n+1) {
 }
 ```
 
+## 为破碎图象定义样式
+```css
+img {  
+  display: block;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  height: auto;
+  line-height: 2;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+```
+以添加伪元素的法则来显示用户信息和URL的引用
+```css
+img::before {  
+  content: "We're sorry, the image below is broken :(";
+  display: block;
+  margin-bottom: 10px;
+}
+
+img::after {  
+  content: "(url: " attr(src) ")";
+  display: block;
+  font-size: 12px;
+}
+```
+
 ##  文字竖向排列（writing-mode）
 参考：[改变CSS世界纵横规则的writing-mode属性](http://www.zhangxinxu.com/wordpress/2016/04/css-writing-mode/)
 ```css
@@ -186,8 +214,9 @@ table {
 ```
 这个属性值相当于一个变量，其实际值与元素的color值一致
 
-
+- - -
 **参考**：
 - [CSS 黑魔法小技巧，让你少写不必要的JS，代码更优雅](https://github.com/jawil/blog/issues/29)
+- [CSS 专业技巧](https://github.com/AllThingsSmitty/css-protips/tree/master/translations/zh-CN#%E6%94%AF%E6%8C%81%E6%83%85%E5%86%B5)
 - [你不知道的CSS（三）](https://segmentfault.com/a/1190000011194809)
 - [谈谈一些有趣的 CSS 话题](https://github.com/chokcoco/iCSS)
