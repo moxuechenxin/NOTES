@@ -16,6 +16,12 @@ svn add [--force] <filename>
 ```
 文件名`<filename>`支持glob匹配
 
+#### 一次性增加所有新增的文件到svn库：
+```bash
+svn st | awk '{if ($1 == "?") {print $2} }' | xargs svn add
+```
+
+
 ## 提交到服务器
 ```bash
 # git ci
@@ -31,6 +37,11 @@ git update [-r <修正版本>] <local-path>
 ## 删除文件
 ```bash
 svn delete <remote-path> [-m <commit-msg>]
+```
+
+#### 一次性从svn库删除所有需要删除的文件
+```bash
+svn st | awk '{if ($1 == "!") {print $2}}' | xargs svn rm
 ```
 
 ## 加锁/解锁
