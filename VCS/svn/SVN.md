@@ -12,7 +12,7 @@ svn export [-r <版本号>] <remote-path> [<local-path>] [--username <username>]
 
 ## 添加到版本控制
 ```bash
-svn add <filename>
+svn add [--force] <filename>
 ```
 文件名`<filename>`支持glob匹配
 
