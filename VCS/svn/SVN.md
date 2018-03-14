@@ -16,6 +16,11 @@ svn add [--force] <filename>
 ```
 文件名`<filename>`支持glob匹配
 
+#### 只添加一个目录而不包括其内容
+```bash
+svn add --depth=empty <dirname>
+```
+
 #### 一次性增加所有新增的文件到svn库：
 ```bash
 svn st | awk '{if ($1 == "?") {print $2} }' | xargs svn add
