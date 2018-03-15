@@ -31,12 +31,12 @@ svn st | awk '{if ($1 == "?") {print $2} }' | xargs svn add
 ```bash
 # git ci
 # 如果选择了保持锁，就是用-no-unlock开关
-git commit -m <commit-msg> [-N] [--no-unlock] <commit-path>
+svn commit -m <commit-msg> [-N] [--no-unlock] <commit-path>
 ```
 
 ## 更新本地仓库
 ```bash
-git update [-r <修正版本>] <local-path>
+svn update [-r <修正版本>] <local-path>
 ```
 
 ## 删除文件
