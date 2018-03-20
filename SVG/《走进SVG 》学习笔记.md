@@ -20,9 +20,9 @@
 **属性**：
 - `x`、`y`：距离坐标原点的距离（左上角）
 - `width`、`height`：矩形宽高
-- `rx`、`ry`：矩形圆角（如果只定义其一，则另一属性值相同）
+- `rx`、`ry`：矩形圆角（如果只定义其一，则另一属性值相同）
 
-#### `<circle>` 圆
+#### `<circle>` 圆
 **属性**：
 - `cx`、`cy`：圆心距离坐标原点的距离
 - `r`： 半径
@@ -47,7 +47,7 @@ points="x1 y1 x2 y2 x3 y3 x4 y4 ..."
 
 #### `<polygon>` 多边形
 **属性**：
-- `points`：点坐标集合（首尾点相连图形闭合）
+- `points`：点坐标集合（首尾点相连图形闭合）
 
 ```
 points="x1 y1 x2 y2 x3 y3 x4 y4 ..."
@@ -98,14 +98,14 @@ points="x1 y1 x2 y2 x3 y3 x4 y4 ..."
 
 **注**：
 - 如果没有指定`viewBox`属性，则同viewport
-- 如果宽高比和viewport相同，将会拉伸填充满整个viewport
+- 如果宽高比和viewport相同，将会拉伸填充满整个viewport
 - 如果宽高比和viewport不同，使用`preserveAspectRatio`控制显示行为
 
 **preserveAspectRatio**：  
 **语法**：preserveAspectRatio = [defer] <align> [meetOrSlice]  
 **参数**：
 - `defer`: 可选，仅在`image`元素上应用`preserveAspectRatio`属性时才使用 
-- `align`: 默认值`xMidYMid`，指定`viewbox`在viewport中的对齐方式（除了`none`其余值由两部分组成：X方向的对齐方式、Y方向的对齐方式）
+- `align`: 默认值`xMidYMid`，指定`viewbox`在viewport中的对齐方式（除了`none`其余值由两部分组成：X方向的对齐方式、Y方向的对齐方式）
 
 取值 | 描述
 ---|---
@@ -122,8 +122,8 @@ YMax | viewBox的最大Y值对齐viewport的底边
 
 取值 | 描述
 ---|---
-meet	| 默认值, 保持宽高比并将viewBox按长宽比中的较小值缩放(类似background-size的contain)
-slice |	保持宽高比并将viewBox按长宽比中的较大值缩放(类似background-size的cover)
+meet	| 默认值, 保持宽高比并将viewBox按长宽比中的较小值缩放(类似background-size的contain)
+slice |	保持宽高比并将viewBox按长宽比中的较大值缩放(类似background-size的cover)
 none	| 不保存宽高比。缩放图像适合整个viewbox，可能会发生图像变形
 
 **DEMO**：
@@ -137,7 +137,7 @@ none	| 不保存宽高比。缩放图像适合整个viewbox，可能会发生图
           style="stroke: #000000; fill:none;"/>
 </svg>   
 ```
-**说明**：viewport的尺寸为`500 * 75`， viewBox为 `0 0 250 25`，X轴方向的比值为 500 / 250 = 2, Y轴为 75 / 25 = 3, 则`meetOrSlic`为`meet`时，viewBox长宽都缩放2倍；为`slice`时，缩放3倍；为`none`时，宽度缩放2倍，长度缩放3倍（效果就是viewBox相关方向的尺寸也跟着缩放）
+**说明**：viewport的尺寸为`500 * 75`， viewBox为 `0 0 250 25`，X轴方向的比值为 500 / 250 = 2, Y轴为 75 / 25 = 3, 则`meetOrSlic`为`meet`时，viewBox长宽都缩放2倍；为`slice`时，缩放3倍；为`none`时，宽度缩放2倍，长度缩放3倍（效果就是viewBox相关方向的尺寸也跟着缩放）
 
 ## 2.2 SVG中的图形分组
 **知识点**：
@@ -176,7 +176,7 @@ none	| 不保存宽高比。缩放图像适合整个viewbox，可能会发生图
 ## 2.4 四个坐标系
 - **用户坐标系（原始坐标系）**：世界的坐标系
 - **自身坐标系**：每个图形元素或分组独立与生俱来
-- **前驱坐标系**：父容器的坐标系
+- **前驱坐标系**：父容器的坐标系
 - **参考坐标系**：使用其它坐标系来考究自身的情况时使用
 
 #### 2.4.1 用户坐标系
@@ -186,15 +186,15 @@ none	| 不保存宽高比。缩放图像适合整个viewbox，可能会发生图
 
 ## 2.5 坐标变换
 - 定义
-- 线性变换
-- 线性变换列表
+- 线性变换
+- 线性变换列表
 - transform属性
 
 #### 2.5.1 坐标变换定义
 #### 2.5.4 transform属性
 注意先后顺序（从左到右）
 
-# 3 颜色、渐变和笔刷
+# 3 颜色、渐变和笔刷
 ## 3.1 认识RGB和HSL
 #### 3.1.1 HSL
 - 三个分量分别表示颜色、饱和度和亮度
@@ -327,8 +327,8 @@ none	| 不保存宽高比。缩放图像适合整个viewbox，可能会发生图
   - `userSpaceOnUse`：
   - `objectBoundingBox`：
 
-# 4 path
-## 4.1 Path概述
+# 4 path
+## 4.1 Path概述
 [参考](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths)
 
 - 强大的绘图工具
@@ -343,11 +343,11 @@ none	| 不保存宽高比。缩放图像适合整个viewbox，可能会发生图
 命令 | 含义
 --- | ---
 M/m (x,y)+ | 移动当前位置
-L/l (x,y)+ | 从当前位置绘制线段到指定位置
-H/h (x)+ | 从当前位置绘制水平线到达指定的x坐标
+L/l (x,y)+ | 从当前位置绘制线段到指定位置
+H/h (x)+ | 从当前位置绘制水平线到达指定的x坐标
 V/v (y)+ | 从当前位置绘制竖直线到达指定的y坐标
 Z/z | 闭合当前路径
-Q/q (x1,y1,x,y)+ | 从当前位置绘制二次贝塞尔曲线到指定位置
+Q/q (x1,y1,x,y)+ | 从当前位置绘制二次贝塞尔曲线到指定位置
 T/t (x,y)+ | 从当前位置光滑绘制二次贝塞尔曲线到指定位置
 C/c (x1,y1,x2,y2,x,y)+ | 从当前位置绘制三次贝塞尔曲线到指定位置
 S/s (x2,y2,x,y)+ | 从当前位置光滑绘制三次贝塞尔曲线到指定位置
@@ -364,14 +364,14 @@ A/a (rx,ry,xr,laf,sf,x,y) | 从当前位置绘制弧线到指定位置
 参数：`(rx,ry,xr,laf,sf,x,y)`  
 实际是取的椭圆的一部分
 
-- `rx/ry`：（radius-x/y）弧线所在椭圆的x、y半轴长
+- `rx/ry`：（radius-x/y）弧线所在椭圆的x、y半轴长
 - `xr`：（xAxis-rotation）弧线所在椭圆的长轴角度（顺时针方向为正）
 - `laf`：（large-arc-flag）0表示短弧线，1表示长弧线
 - `sf`：（sweep-flag）0表示逆时针画弧，1表示顺时针画弧
-- `x/y`：终点位置
+- `x/y`：终点位置
 
 ## 4.4 贝塞尔曲线
-> `x y`为结束点坐标
+> `x y`为结束点坐标
 ### 二次贝塞尔曲线命令(Q/q)
 参数：`Q x1 y1 x y`  
 
@@ -390,8 +390,8 @@ C1是上一段曲线的控制点2关于当前曲线起始点的镜像位置
 ### `<text>`
 **属性**：
 > 文字的位置为左边线和基线的交点
-- `x/y`：文字的起点位置坐标（`y`表示基线位置）
-- `dx/dy`：文字的偏移（多个值表示相应方向对应次序开始的文字的偏移位置）
+- `x/y`：文字的起点位置坐标（`y`表示基线位置）
+- `dx/dy`：文字的偏移（多个值表示相应方向对应次序开始的文字的偏移位置）
 
 ```xml
 <!-- 
@@ -415,7 +415,7 @@ C1是上一段曲线的控制点2关于当前曲线起始点的镜像位置
   <text dy="200 0 200">
     <!--
       tspan的dx/dy会传递下去
-      tspan的dx/dy会覆盖text的dx/dy，后面的tspan会覆盖前面的
+      tspan的dx/dy会覆盖text的dx/dy，后面的tspan会覆盖前面的
     -->
     <tspan 
       fill="red"
@@ -497,9 +497,9 @@ const XLINK_NS = 'http://www.w3.org/2000/xlink'
 
 ## 5.4 `<animate>`插入超链接
 - 可以加到任意的图形上
-- `xlink:href`指定链接地址
+- `xlink:href`指定链接地址
 - `xlink:title`指定链接提示
-- `target`指定打开目标
+- `target`指定打开目标
 
 # 6 图形的引用、裁切和蒙版
 ## 6.1 `<use>`标签创建图形引用
@@ -526,7 +526,7 @@ const XLINK_NS = 'http://www.w3.org/2000/xlink'
 ```
 
 ## 6.2 `<clipPath>`标签裁切图形
-保留重叠的区域`clip-path="url(#clip-id)"`
+保留重叠的区域`clip-path="url(#clip-id)"`
 ```xml
 ```
 
@@ -550,7 +550,7 @@ const XLINK_NS = 'http://www.w3.org/2000/xlink'
 # 7 SVG动画
 ## 7.1 动画原理
 ## 7.2 SMIL for SVG
-> 参考：[张鑫旭SMIL animation动画详解](http://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/)
+> 参考：[张鑫旭SMIL animation动画详解](http://www.zhangxinxu.com/wordpress/2014/08/so-powerful-svg-smil-animation/)
 
 ### 动画标签
 `<animate>`、`<animateTransform>`、`<animateMotion>`
@@ -648,7 +648,7 @@ const XLINK_NS = 'http://www.w3.org/2000/xlink'
 </animateMotion>
 ```
 
-## 7.3 脚本动画
+## 7.3 脚本动画
 - 核心思想  
   - `requestAnimationFrame(updateFn)`
 - 示例  
