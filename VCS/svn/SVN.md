@@ -59,6 +59,7 @@ svn unlock <local-path>
 ```
 
 ## 比较差异
+参考：[【svn】svn的diff命令用法详解](https://blog.csdn.net/dong123dddd/article/details/52451190)
 ```bash
 svn diff [-r <修正版本号1>:<修正版本号2>] <local-path>
 ```
