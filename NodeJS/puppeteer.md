@@ -189,7 +189,21 @@ page.keyboard.type('World', {delay: 100}); // 像用户一样慢慢输入
 - `mouse.move(x, y, [options])`  
 移动鼠标到指定位置，`options.steps` 表示移动的步长，默认为1
 
+## 其他API
+### page.waitFor系列
+返回一个Promise，then中传的值为一个`JSHandle`
 
+- `page.waitFor(selectorOrFunctionOrTimeout[, options[, ...args]])`
+
+**下面是快捷方法**:
+- `page.waitForSelector(selector[, options])`  
+等待某个选择器的元素加载完成之后，这个元素可以是异步加载的
+
+- `page.waitForFunction(pageFunction[, options[, ...args]])`  
+等待pageFunction执行完成之后
+
+- `page.waitForNavigation(options)`  
+等待页面基本元素加载完之后，比如同步的HTML, CSS, JS 等代码
 
 
 
