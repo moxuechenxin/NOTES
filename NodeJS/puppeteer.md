@@ -208,6 +208,7 @@ page.keyboard.type('World', {delay: 100}); // 像用户一样慢慢输入
 
 
 - - -
-- [Puppeteer 入门教程](http://www.r9it.com/20171106/puppeteer.html)
 - [官方api文档](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md)
+- [Puppeteer 入门教程](http://www.r9it.com/20171106/puppeteer.html)
+- [无头浏览器 Puppeteer 初探](https://github.com/ProtoTeam/blog/blob/master/201710/2.md)
 
