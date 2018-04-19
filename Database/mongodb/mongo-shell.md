@@ -32,6 +32,6 @@ db.createUser({
   }]
 })
 
-# 登陆管理员
+# 授权
 db.auth('username', 'password')
 ```

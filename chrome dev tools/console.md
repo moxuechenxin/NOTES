@@ -109,7 +109,7 @@ console.profileEnd();
 ```
 
 ### $
-#### $0~$4表示最近5个选择过的DOM节点
+#### `$0`~`$4`表示最近5个选择过的DOM节点
 #### 类似jQuery的选择器用法:
 `$('div')` 等价于 `document.querySelector('div')`  
 `$$('div')` 等价于 `document.querySelectorAll('div')`
