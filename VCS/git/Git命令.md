@@ -238,6 +238,12 @@ git push [remote] --force
 git push [remote] --all
 ```
 
+## 查看旧版本
+```bash
+# 签出一条以commit-id命名的临时commit分支
+git checkout <commit-id>
+```
+
 ## 撤销
 ```bash
 # 恢复暂存区的指定文件到工作区
