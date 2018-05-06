@@ -4,7 +4,7 @@
 git config --global core.quotepath false
 ```
 
-### [合并分支时，保持某些文件不被合并](http://blog.csdn.net/fkaking/article/details/44955663?ref=myread)
+### [合并分支, 当冲突时，保持某些文件不被合并](http://blog.csdn.net/fkaking/article/details/44955663?ref=myread)
 1. 创建自定义merge driver
 ```bash
 git config --global merge.ours.driver true 
@@ -45,6 +45,10 @@ git fetch
 git checkout -m <版本号> <文件／文件夹>
 # 或
 git checkout origin/master -- <path/to/file>
+```
+### 合并指定分支的指定文件
+```bash
+git checkout <another-branch> <path/to/file>
 ```
 
 ### [用 Git Subtree 在多个 Git 项目间双向同步子项目，附简明使用手册](https://segmentfault.com/a/1190000003969060)
