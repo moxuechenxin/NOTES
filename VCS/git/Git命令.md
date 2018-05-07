@@ -50,6 +50,25 @@ git rm --cached [file]
 git mv [file-original] [file-renamed]
 ```
 
+## 清理(删除)未跟踪文件
+```bash
+# 移除没有忽略的未跟踪文件（任何与 .gitignore 或其他忽略文件中的模式匹配的文件都不会被移除）
+git clean
+
+# 移除包含.gitignore匹配到的未跟踪文件
+git clean -x
+
+# 模拟执行（不会真正操作）
+git clean -n
+
+# 以交互方式运行
+git clean -i
+
+# 移除工作目录中所有未追踪的文件以及空的子目录（-f表示强制）
+git clean -f -d
+
+```
+
 ## 代码提交
 ```bash
 git commit -m [message]
