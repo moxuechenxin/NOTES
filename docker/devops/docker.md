@@ -187,6 +187,14 @@ overlay和underlay
 不同主机的docker之间怎么通信
 ```
 ```
+### docker日志
+```bash
+docker logs -f -t --since="2017-05-31" --tail=10 <container-name>
+```
+- `--since` : 此参数指定了输出日志开始日期，即只输出指定日期之后的日志。
+- `-f` : 查看实时日志
+- `-t` : 查看日志产生的日期
+- `-tail=10` : 查看最后的10条日志
 
 ### docker的持久化储存和数据共享
 **方案**：
