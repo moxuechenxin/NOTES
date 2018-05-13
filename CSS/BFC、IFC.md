@@ -33,6 +33,7 @@ W3C CSS2.1 规范中的一个概念，它是页面中的一块渲染区域，并
 - height
 - vertical-aligin
 
+- - -
 **参考**：
 - [理解BFC、IFC、GFC、FFC](http://blog.csdn.net/u011472830/article/details/73010596)
 - [CSS原理解析之模型篇](https://juejin.im/post/59dca82051882578db27b1d6)

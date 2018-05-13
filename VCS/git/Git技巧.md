@@ -26,6 +26,16 @@ git merge newbranch
 ```
 经过以上步骤，我们指定的email.json就不会被合并
 
+### 合并分支，忽略指定目录
+
+```bash
+# <path>是要忽略的目录
+git merge --no-ff --no-commit <merge-branch>
+git reset HEAD <path>
+git checkout -- <path>
+git clean -fd <path>
+```
+
 ### git只clone仓库中指定子目录和指定文件
 
 ```bash
