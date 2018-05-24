@@ -70,7 +70,7 @@ xhr.onreadystatechange=function(){
     }
     
 */
-    if(xhr.readystate==4){
+    if(xhr.readyState==4){
         if(xhr.status==200){
             alert(xhr.responseText);
         }else{
