@@ -22,25 +22,27 @@ class Watcher {
     this.deepProxy(this.target, this.key)
   }
 
+  // 深层遍历对象的每个属性，然后通过defineReactive处理
   deepProxy (obj, key) {
     if (key) {
       const val = obj[key]
       if (typeof val === 'object') {
         this.deepProxy(val)
       }
-      this.observe(obj, key)
+      this.defineReactive(obj, key)
     } else {
-      Object.keys(obj).forEach(key => {
+      Object.keys(obj).forEach(key => { // fix-me: 数组再挂载非下标属性时，非下标属性也能遍历出来
         const val = obj[key]
         if (typeof val === 'object') {
           this.deepProxy(val)
         }
-        this.observe(obj, key)
+        this.defineReactive(obj, key)
       })
     }
   }
 
-  observe = (()=> {
+  // 使用defineProperty设置getter和setter
+  defineReactive = (()=> {
     let timer = null
     return function(obj, key) {
       let _value = obj[key]
