@@ -67,6 +67,13 @@ scheme | some_text | 定义用于翻译 content 属性值的格式
 <!--告诉IE8+使用最新的引擎渲染网页，chrome=1则可以激活Chrome Frame-->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+<!-- 打开和关闭 DNS 预读取： on/off  -->
+<!-- 默认情况下，通过 HTTPS 加载的页面上内嵌链接的域名并不会执行预加载 -->
+<!-- https://developer.mozilla.org/zh-CN/docs/Controlling_DNS_prefetching -->
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- 与以下link标签配合使用 -->
+<link rel="dns-prefetch" href="http://www.spreadfirefox.com/">
+
 <!--语言-->
 <meta http-equiv="content-language" content="zh-CN" />
 
