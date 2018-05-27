@@ -29,6 +29,10 @@
 - 队列的操作全部执行完毕
 - 执行的回调数目达到指定的最大值，然后，Event Loop进入下一个阶段
 
+**node中的事件循环的顺序**：  
+
+外部输入数据-->轮询阶段(poll)-->检查阶段(check)-->关闭事件回调阶段(close callback)-->定时器检测阶段(timer)-->I/O事件回调阶段(I/O callbacks)-->闲置阶段(idle, prepare)-->轮询阶段...
+
 ### 各阶段概览
 阶段 | 概览
 ---|---
@@ -68,7 +72,7 @@ poll阶段有两个功能：
 如果一个 socket 或者 handle 被突然关闭（比如`socket.destroy()`），那么就会有一个 close 事件进入这个阶段
 
 ### process.nextTick()
-不管Event Loop当前处于哪个阶段，nextTick队列都是在当前阶段后就被执行了
+不管Event Loop当前处于哪个阶段，nextTick队列都是在当前阶段后下一阶段前就被执行了
 
 ### setTimeout 和 setImmediate
 **情况一**：如果 setTimeout 和 setImmediate 都是在主模块（main module）中被调用的，那么回调的执行顺序取决于当前进程的性能，这个性能受其他应用程序进程的影响，即两个回调的执行顺序是无法判断
@@ -101,17 +105,35 @@ fs.readFile(__filename, () => {
 
 问题的关键在于setTimeout何时到期，只有到期的setTimeout才能保证在setImmediate之前执行
 
-## Chrome中的Event Loop
-### 规范
-1. 执行最旧的task（一次）
-2. 检查是否存在microtask，然后依次执行，知道清空队列（多次）
-3. 执行render
+## 浏览器中的Event Loop
+### 几个概念
+- 执行栈
+- 事件队列：宏任务队列/微任务队列
 
-`MacroTask`： 包含了 setTimeout, setInterval, setImmediate, requestAnimationFrame, I/O, UI rendering  
-`MicroTask`： 包含了 process.nextTick, Promise, Object.observe, MutationObserver 等
+### Event Loop流程
+1. 执行当前`执行栈`中的任务
+2. 异步事件返回结果后，将该事件加入到`事件队列`中
+3. 等待当前执行栈中的所有任务执行完毕，主线程处于闲置状态时，将`事件队列`中的任务按先后顺序放入`执行栈`中，然后执行其中的同步代码
+4. 如此循环...
+
+**注**：`事件队列`又分为两个队列：`MicroTask`队列和`MacroTask`队列，在上面第3步时先处理`MicroTask`队列，然后`MacroTask`队列
+
+**`MicroTask`**： 包含了`process.nextTick`, `Promise`, `Object.observe`, `MutationObserver` 等    
+**`MacroTask`**： 包含了`setTimeout`, `setInterval`, `setImmediate`, `requestAnimationFrame`, `I/O`, `UI rendering` 
+
+**注**：同一次事件循环中，微任务永远在宏任务之前执行
+
+
+
+
+
+
+
 
 - - - 
 **参考**：
+- [详解JavaScript中的Event Loop（事件循环）机制](https://zhuanlan.zhihu.com/p/33058983)
 - [JavaScript Event Loop 机制详解与 Vue.js 中实践应用](https://zhuanlan.zhihu.com/p/29116364)
 - [Event Loop的规范和实现](https://github.com/ProtoTeam/blog/blob/master/201801/2.md)
 - [The Node.js Event Loop, Timers, and process.nextTick()](https://juejin.im/post/5ab7677f6fb9a028d56711d0)
+- [并发模型与事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
