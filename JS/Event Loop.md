@@ -123,16 +123,10 @@ fs.readFile(__filename, () => {
 
 **注**：同一次事件循环中，微任务永远在宏任务之前执行
 
-
-
-
-
-
-
-
 - - - 
 **参考**：
 - [详解JavaScript中的Event Loop（事件循环）机制](https://zhuanlan.zhihu.com/p/33058983)
+- [深入理解javascript中的事件循环event-loop](https://www.cnblogs.com/xiaohuochai/p/8527618.html)
 - [JavaScript Event Loop 机制详解与 Vue.js 中实践应用](https://zhuanlan.zhihu.com/p/29116364)
 - [Event Loop的规范和实现](https://github.com/ProtoTeam/blog/blob/master/201801/2.md)
 - [The Node.js Event Loop, Timers, and process.nextTick()](https://juejin.im/post/5ab7677f6fb9a028d56711d0)
