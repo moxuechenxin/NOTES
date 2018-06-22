@@ -63,7 +63,7 @@ c) | 一个可以下载得到 (b) 资源的 url (通常是 http(s) url) | `https
 d) | 一个格式为 <name>@<version> 的字符串，可指向 npm 源(通常是官方源 npmjs.org)上已发布的可访问 url，且该 url 满足条件 (c) | `webpack@4.1.0`
 e) | 一个格式为 <name>@<tag> 的字符串，在 npm 源上该<tag>指向某 <version> 得到 <name>@<version>，后者满足条件 (d) | `webpack@latest`
 f) | 一个格式为 <name> 的字符串，默认添加 latest 标签所得到的 <name>@latest 满足条件 (e) | `webpack`
-g) | 一个 git url, 该 url 所指向的代码库满足条件 (a) | `git@github.com:webpack/webpack.git`
+g) | 一个 git url, 该 url 所指向的代码库满足条件 (a)  [参考](https://docs.npmjs.com/files/package.json#git-urls-as-dependencies) | `git@github.com:webpack/webpack.git` 
 
 ### 安装本地包/远程git仓库包
 #### 场景1: 本地模块引用
@@ -222,6 +222,58 @@ npx 将会从 npm 源下载 cowsay 这个包（但并不安装）并执行
 ##### 场景2: 一键执行 GitHub Gist
 
 ##### 场景3: 使用不同版本 node 执行命令
+
+## npm publish
+### 发布
+1. 注册或登录npm账号
+
+```bash
+# 创建账号
+npm adduser
+# 登陆
+npm login
+
+# 使用 npm whoami 查看登陆用户
+```
+
+2. 在项目目录中初始化package.json
+
+```bash
+npm init [--scope=<your_scope>]
+```
+推荐添加`README.md`作为包的描述文件
+
+3. 发布
+
+```bash
+# 带scope的包默认发布为私人包
+# 如果没有 tarball 或 folder 被指定，则使用当前目录
+# --tag <tag>：给被发布的包注册指定的 tag，如果没有该参数，则默认使用 latest
+npm publish [<tarball>|<folder>] [--tag <tag>] [--access <public|restricted>]
+```
+
+### 更新
+```bash
+# update_type: patch, minor, or major
+npm version <update_type>
+
+npm publish
+```
+该命令会改变package.json中的version，同时会在git仓库中添加一条tag记录
+
+### 取消发布
+取消发布一个包，或一个包的某些版本
+
+```bash
+npm unpublish [<@scope>/]<pkg>[@<version>]
+```
+
+### 弃用
+弃用一个包，或一个包的某些版本，尝试安装这些弃用包的用户将会收到警告
+
+```bash
+npm deprecate <pkg>[@<version>] <message>
+```
 
 ## npm配置
 ### npm config
