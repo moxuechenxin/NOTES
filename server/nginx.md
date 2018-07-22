@@ -266,3 +266,116 @@ location / {
 ```
 
 #### 请求限制
+- 连接频率限制：`limit_conn_module`  
+- 请求频率限制：`limit_req_module`
+
+HTTP协议版本 | 连接关系
+---|---
+HTTP1.0 | TCP不能复用
+HTTP1.1 | 顺序性TCP复用
+HTTP2.0 | 多路复用TCP复用
+
+**HTTP协议的连接与请求**：
+- HTTP请求建立在一次TCP连接基础上   
+- 一次TCP请求至少产生一次HTTP请求
+
+**连接限制**：
+```bash
+Syntax: limit_conn_zone key zone=name:size;
+Default: --;
+Context: http;
+```
+```bash
+Syntax: limit_conn zone number;
+Default: --;
+Context: http, server, location;
+```
+```bash
+http {
+  # ....
+
+  limit_conn_zone $binary_remote_addr zone=conn_zone:1m;
+
+  server {
+    # ....
+    location / {
+      root /usr/share/nginx/html;
+      limit_conn conn_zone 1;
+      index index.html index.htm;
+    }
+  }
+}
+```
+
+**请求限制**：
+```bash
+Syntax: limit_req_zone key zone=name:size rate=rate;
+Default: --;
+Context: http;
+```
+
+```bash
+Syntax: limit_req zone=name [burst=number] [nodelay];
+Default: --;
+Context: http, server, location;
+```
+```bash
+http {
+  # ....
+
+  limit_req_zone $binary_remote_addr zone=req_zone:1m rate=1r/s;
+
+  server {
+    # ....
+    location / {
+      root /usr/share/nginx/html;
+      limit_req zone=req_zone;
+      index index.html index.htm;
+    }
+  }
+}
+```
+
+#### 访问限制
+- 基于IP的访问控制：`http_access_module`
+- 基于用户的信任登陆：`http_auth_basic_module`
+
+**http_access_module**：
+```bash
+Syntax: allow address | CIDR | unix: | all;
+Default: --;
+Context: http, server, location, limit_except;
+```
+
+```bash
+# address => remote_addr
+Syntax: deny address | CIDR | unix: | all;
+Default: --;
+Context: http, server, location, limit_except;
+```
+
+```bash
+http {
+  # ....
+
+  server {
+    # ...
+
+    location ~  ^/api {
+      allow 125.55.55.4/24;
+      deny all;
+    }
+  }
+}
+```
+
+**局限性**：
+- 只能通过`$remote_addr`控制信任
+
+**应对措施**：
+1. 采用别的HTTP头信息控制访问，如：`HTTP_X_FORWARD_FOR`（可串改，不一定准确）
+2. 结合geo模块
+3. 通过HTTP自定义变量传递
+
+**`http_x_forwarded_for`**：
+![http_x_forwarded_for](/.assets/images/http_x_forwarded_for.png)
