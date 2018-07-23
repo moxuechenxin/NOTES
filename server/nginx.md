@@ -372,10 +372,167 @@ http {
 **局限性**：
 - 只能通过`$remote_addr`控制信任
 
-**应对措施**：
+**解决方案**：
 1. 采用别的HTTP头信息控制访问，如：`HTTP_X_FORWARD_FOR`（可串改，不一定准确）
 2. 结合geo模块
 3. 通过HTTP自定义变量传递
 
 **`http_x_forwarded_for`**：
 ![http_x_forwarded_for](/.assets/images/http_x_forwarded_for.png)
+
+**http_auth_basic_module**：
+```bash
+Syntax: auth_basic string | off;
+Default: auth_basic off;
+Context: http, server, location, limit_except;
+```
+```bash
+# yum install httpd-tools
+# 可使用htpasswd生成密码文件
+# htpasswd -c </path/to/file> <username>
+Syntax: auth_basic_user_file file;
+Default: --;
+Context: http, server, location, limit_except;
+```
+```bash
+http {
+  # ...
+
+  server {
+    # ....
+
+    location ~ ^/admin.html {
+      # ...
+      auth_basic "Auth access test! Input your password!";
+      auth_basic_user_file <path/to/file>;  
+    }
+  }
+}
+```
+
+**局限性**：
+- 用户信息依赖文件方式
+- 操作管理机械，效率地下
+
+**解决方案**：
+- Nginx结合LUA实现高效验证
+- Nginx和LDAP打通，利用nginx-auth-ldap
+
+## 常见Nginx中间件架构
+- 静态资源WEB服务
+- 代理服务
+- 负载均衡调度器SLB
+- 动态缓存
+
+### 静态资源WEB服务
+##### 静态资源服务场景-CDN
+
+**文件读取**：
+引读：`--with-file-aio`异步文件读取
+
+```bash
+Syntax: sendfile on | off;
+Default: sendfile off;
+Context: http, server, location, if in location;
+```
+
+**tcp_nopush**：
+作用：sendfile开启的情况下，提高网络包的传输效率
+
+```bash
+Syntax: tcp_nopush on | off;
+Default: tcp_nopush off;
+Context: http, server, location;
+```
+
+**tcp_nodelay**：
+作用：keepalive连接下，提高网络包的传输实时性
+
+```bash
+Syntax: tcp_nodelay on | off;
+Default: tcp_nodelay off;
+Context: http, server, location;
+```
+
+**压缩（gzip）**：
+作用：压缩传输
+
+```bash
+Syntax: gzip on | off;
+Default: gzip off;
+Context: http, server, location, if in location;
+```
+```bash
+Syntax: gzip_comp_level level;
+Default: gzip_comp_level 1;
+Context: http, server, location;
+```
+```bash
+Syntax: gzip_http_version 1.0 | 1.1;
+Default: gzip_http_version 1.1;
+Context: http, server, location;
+```
+```bash
+# Syntax: gzip_types mimes;
+# Default: ;
+# Context: http, server, location;
+```
+
+**扩展Nginx压缩模块**：
+- `http_gzip_static_module`：预读gzip功能（文件已gzip压缩）
+- `http_gunzip_module`：应用支持gunzip的压缩方式
+
+```bash
+server {
+    # ...
+
+    sendfile on;
+    
+    location ~ .*\.(jpg|gif|png)$ {
+        gzip on;
+        gzip_http_version 1.1;
+        gzip_comp_level 2;
+        gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+        root  /opt/app/code/images;
+    }
+
+    location ~ .*\.(txt|xml)$ {
+        gzip on;
+        gzip_http_version 1.1;
+        gzip_comp_level 1;
+        gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+        root  /opt/app/code/doc;
+    }
+
+    location ~ ^/download {
+        # 访问/download/test.img 返回 /download/test.img.gz
+        gzip_static on;
+        tcp_nopush on;
+        root /opt/app/code;
+    }
+}
+```
+
+#### 浏览器缓存
+HTTP协议定义的缓存机制（如：Expires； Cache-Control等）
+
+![http-cache](/.assets/images/http-cache.png)
+
+**配置语法**：
+添加Cache-Control、Expires头
+
+```bash
+Syntax: expires [modified] time;
+        expires epoch | max | off;
+Default: expires off;
+Context: http, server, location, if in location;
+```
+
+```bash
+server {
+  # ....
+  location ~ .*\.(css|js)$ {
+    expires 365d;
+  }
+}
+```

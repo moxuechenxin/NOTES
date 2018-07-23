@@ -9,7 +9,7 @@ new Blob(blobParts[, options])
 ```
 
 **参数**：
-`blobParts`：数组类型，数组中的每一项连接起来构成Blob对象的数据，数组中的每项元素可以是`ArrayBuffer`，`ArrayBufferView`，`Blob`，`DOMString`
+`blobParts`：一个由`ArrayBuffer`, `ArrayBufferView`, `Blob`, `DOMString` 等对象构成的 Array ，或者其他类似对象的混合体，它将会被放进 Blob。`DOMStrings`会被编码为UTF-8
 
 `options`：可选项，字典格式类型，可以指定如下两个属性
 - type：默认值为 ""，它代表了将会被放入到blob中的数组内容的MIME类型
@@ -37,6 +37,10 @@ console.log(blob4);  //输出：Blob {size: 14, type: ""}
 console.log(blob5);  //输出：Blob {size: 15, type: ""}
 console.log(blob6);  //输出：Blob {size: 59, type: ""}
 ```
+### size与type属性
+`size`：Blob 对象中所包含数据的大小（字节）  
+`type`：一个字符串，表明该Blob对象所包含数据的MIME类型。如果类型未知，则该值为空字符串
+
 
 ### slice方法
 返回一个新的 Blob对象，包含了源 Blob对象中指定范围内的数据
@@ -180,5 +184,51 @@ var blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
 var blobURL = URL.createObjectURL(blob);
 ```
 
+## File API
+HTML5 File API 允许我们对本地文件进行读取、上传等操作，主要包含三个对象：File，FileList 与用于读取数据的 FileReader。
+
+- **File**对象: Blob 的分支，或者说子集，表示包含某些元数据的单一文件对象；
+- **FileList**：文件对象的列表。
+- **FileReader**： 能够用于从 Blob 对象中读取数据，包含了一系列读取文件的方法与事件回调
+
+```js
+const reader = new FileReader();
+reader.addEventListener('loadend', function() {
+  // reader.result 包含了 Typed Array 格式的 Blob 内容
+});
+reader.readAsArrayBuffer(blob);
+
+blob = new Blob(['This is my blob content'], { type: 'text/plain' });
+read.readAsText(bolb); // 读取为文本
+
+// reader.readAsArrayBuffer   //将读取结果封装成 ArrayBuffer ，如果想使用一般需要转换成 Int8Array 或 DataView
+// reader.readAsBinaryString  // 在IE浏览器中不支持改方法
+// reader.readAsTex // 该方法有两个参数，其中第二个参数是文本的编码方式，默认值为 UTF-8
+// reader.readAsDataURL  // 读取结果为DataURL
+// reader.readyState // 上传中的状态
+```
+
+获取剪贴板中的图片，并将其预览展示
+```js
+const cbd = e.clipboardData;
+const fr = new FileReader();
+
+for (let i = 0; i < cbd.items.length; i++) {
+  const item = cbd.items[i];
+
+  if (item.kind == 'file') {
+    const blob = item.getAsFile();
+    if (blob.size === 0) {
+      return;
+    }
+
+    previewFile(blob);
+  }
+}
+```
+
+
 **参考**：
 - [细说Web API中的Blob](https://juejin.im/post/59e35d0e6fb9a045030f1f35)
+- [Blob-MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob)
+- [Web 开发中 Blob 与 FileAPI 使用简述](https://juejin.im/post/5b544b01f265da0f800ddece)

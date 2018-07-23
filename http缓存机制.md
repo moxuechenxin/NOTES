@@ -86,6 +86,8 @@ Cache-Control:private,no-cache
 - 在性能上，`Etag`要逊于`Last-Modified`，`Last-Modified`只需要记录时间，而Etag需要服务器通过算法来计算出一个hash值
 - 优先级上，服务器校验优先考虑`Etag`
 
+![http-cache](/.assets/images/http-cache.png)
+
 ## 更新资源的方式
 - html一般采用`Cache-Control:no-cache,must-revalidate`
 （css、js、图片资源放在CDN上，利用`Cache-Control:max-age=...`去做一个长cache）
