@@ -536,3 +536,38 @@ server {
   }
 }
 ```
+
+#### 跨域请求
+```bash
+Syntax: add_header name value [always];
+Default: --;
+Context: http, server, location, if in location;
+```
+
+```bash
+server {
+  # ...
+
+  location ~ ^/api {
+    add_header Access-Control-Allow-Origin http://www.a.com;
+    add_header Access-Control-Allow-Methods GET, POST;
+    # ...
+  }
+}
+```
+
+#### 防盗链
+##### 基于http_referer防盗链
+```bash
+server {
+  # ...
+
+  location ~ .*\.(png|jpg|gif)$ {
+    valid_referers none blocked www.mydomain.com mydomain.com;
+ 
+    if ($invalid_referer) {
+      return   403;
+    }
+  }
+}
+```
