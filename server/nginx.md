@@ -571,3 +571,56 @@ server {
   }
 }
 ```
+
+#### 代理服务
+![nginx-proxy](/.assets/images/nginx-proxy.png)
+
+**正向代理**：
+正向代理的对象是客户端
+
+**反向代理**：
+正向代理的对象是服务端
+
+**配置语法**：
+```bash
+Syntax: proxy_pass URL;
+Default: --;
+Context: location, if in location, limit_except;
+```
+```bash
+# URL有以下几种类型：
+http://localhost:8000/uri/
+https://192.168.1.1:8000/uri/
+http://unix:/tmp/backend.socket:/uri/
+```
+
+##### 缓冲区
+```bash
+# 扩展proxy_buffer_size、proxy_buffers、proxy_busy_buffers_size
+Syntax: proxy_buffering on | off;
+Default: proxy_buffering on;
+Context: http, server, location;
+```
+
+##### 跳转重定向
+```bash
+Syntax: proxy_redirect default; | proxy_redirect off; | proxy_redirect redirect replacement;
+Default: proxy_redirect default;
+Context: http, server, location;
+```
+
+##### 头信息
+```bash
+# 扩展：proxy_hide_header、proxy_set_body
+Syntax: proxy_set_header field value;
+Default: proxy_set_header Host $proxy_host; | proxy_set_header Connection close;
+Context: http, server, location;
+```
+
+##### 超时
+```bash
+# 扩展：proxy_read_timeout、proxy_send_timeout
+Syntax: proxy_connect_timeout time;
+Default: proxy_connect_timeout 60s;
+Context: http, server, location;
+```
